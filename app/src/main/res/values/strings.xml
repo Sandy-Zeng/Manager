@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LoginDemo</string>
+    <string name="navigation_name">是仙女呀</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="classify">产品分类</string>
+</resources>
