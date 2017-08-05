@@ -10,7 +10,10 @@
     <color name="main_color">#FF8C94</color>
     <color name="activity_bg_color">#fffafafa</color>
     <color name="top_category_bar_background">#ffeeeeee</color>
-    <color name="divider">#ffdddddd</color>
+    <color name="divider">#dddddd</color>
+    <color name="White">#ffffff</color>
+    <color name="secFont">#999999</color>
+    <color name="appColor">#FF80AB</color>
 
     <color name="category_tab_text">#ff707070</color>
     <color name="category_tab_text_dark">#fffafafa</color>

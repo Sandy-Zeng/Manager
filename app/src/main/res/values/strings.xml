@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">LoginDemo</string>
+    <string name="app_name">是仙女呀</string>
     <string name="navigation_name">是仙女呀</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="classify">产品分类</string>
+    <string name="action_settings">Settings</string>
 
     <string name="category_allcustomer">所有客户</string>
     <string name="category_addcustomer">添加客户</string>

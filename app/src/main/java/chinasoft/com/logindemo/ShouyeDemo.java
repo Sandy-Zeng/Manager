@@ -59,7 +59,7 @@ public class ShouyeDemo extends Activity {
         transaction.commit();
         //shouye.setBackgroundColor(getResources().getColor(R.color.colorLogin));
         shouyeView.setImageResource(R.drawable.shouye_press);
-        shouye.setTextColor(getResources().getColor(R.color.colorLogin));
+        shouye.setTextColor(getResources().getColor(R.color.appColor));
     }
 
 
@@ -87,28 +87,28 @@ public class ShouyeDemo extends Activity {
                 contentFragment = new ShouyeFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //shouye.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                shouye.setTextColor(getResources().getColor(R.color.colorLogin));
+                shouye.setTextColor(getResources().getColor(R.color.appColor));
                 shouyeView.setImageResource(R.drawable.shouye_press);
                 break;
             case R.id.shouyeView:
                 contentFragment = new ShouyeFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //shouye.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                shouye.setTextColor(getResources().getColor(R.color.colorLogin));
+                shouye.setTextColor(getResources().getColor(R.color.appColor));
                 shouyeView.setImageResource(R.drawable.shouye_press);
                 break;
             case R.id.blog:
                 contentFragment = new BlogFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //blog.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                blog.setTextColor(getResources().getColor(R.color.colorLogin));
+                blog.setTextColor(getResources().getColor(R.color.appColor));
                 blogView.setImageResource(R.drawable.blog_press);
                 break;
             case R.id.blogView:
                 contentFragment = new BlogFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //blog.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                blog.setTextColor(getResources().getColor(R.color.colorLogin));
+                blog.setTextColor(getResources().getColor(R.color.appColor));
                 blogView.setImageResource(R.drawable.blog_press);
                 break;
 
@@ -116,28 +116,28 @@ public class ShouyeDemo extends Activity {
                 contentFragment = new CartFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //cart.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                cart.setTextColor(getResources().getColor(R.color.colorLogin));
+                cart.setTextColor(getResources().getColor(R.color.appColor));
                 cartView.setImageResource(R.drawable.cart_press);
                 break;
             case R.id.cartView:
                 contentFragment = new CartFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //cart.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                cart.setTextColor(getResources().getColor(R.color.colorLogin));
+                cart.setTextColor(getResources().getColor(R.color.appColor));
                 cartView.setImageResource(R.drawable.cart_press);
                 break;
             case R.id.my:
                 contentFragment = new MyFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //my.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                my.setTextColor(getResources().getColor(R.color.colorLogin));
+                my.setTextColor(getResources().getColor(R.color.appColor));
                 myView.setImageResource(R.drawable.my_press);
                 break;
             case R.id.myView:
                 contentFragment = new MyFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //my.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                my.setTextColor(getResources().getColor(R.color.colorLogin));
+                my.setTextColor(getResources().getColor(R.color.appColor));
                 myView.setImageResource(R.drawable.my_press);
                 break;
             default:
