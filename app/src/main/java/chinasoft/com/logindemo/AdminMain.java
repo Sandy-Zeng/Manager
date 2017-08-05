@@ -1,33 +1,35 @@
 package chinasoft.com.logindemo;
 
+import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import chinasoft.com.chinasoft.com.adapter.MenuAdapter;
-import chinasoft.com.fragment.NewsFragment;
-import chinasoft.com.util.CategoryTabStrip;
+import chinasoft.com.fragment.AdminFragment;
+import chinasoft.com.fragment.CustomerFragment;
+import chinasoft.com.fragment.OrderFragment;
+import chinasoft.com.fragment.ProductFragment;
+import chinasoft.com.fragment.SettingFragment;
+import chinasoft.com.fragment.StorageFragment;
 import chinasoft.com.util.SlidingMenu;
 
 public class AdminMain extends AppCompatActivity {
 
-    private SlidingMenu slideMenu1;
-    private ListView lv_menu;
-    private MenuAdapter menuAdapter;
+    private SlidingMenu slideMenu1;//滑动菜单
+    private ListView lv_menu;//滑动菜单项
+    private MenuAdapter menuAdapter;//滑动菜单适配器
     private ImageView iv_menu;
 
-    private CategoryTabStrip tabs;
-    private ViewPager pager;
-    private MyPagerAdapter adapter;
+    private Fragment contentFragment;
+    private android.app.FragmentManager fragmentManager;
+    private android.app.FragmentTransaction transaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +37,7 @@ public class AdminMain extends AppCompatActivity {
         setContentView(R.layout.activity_admin_main);
         initView();
 
-        tabs = (CategoryTabStrip) findViewById(R.id.category_strip);
-        pager = (ViewPager) findViewById(R.id.view_pager);
-        adapter = new MyPagerAdapter(getSupportFragmentManager());
-
-        pager.setAdapter(adapter);
-
-        tabs.setViewPager(pager);
+        initUi();//初始化管理者对象
 
     }
 
@@ -69,34 +65,60 @@ public class AdminMain extends AppCompatActivity {
 
             }
         });
+
+        //为滑动菜单项添加点击事件
+        lv_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("info",Integer.toString(position));
+                transaction=fragmentManager.beginTransaction();
+                switch(position){
+                    case 0:
+                        contentFragment = new AdminFragment();
+                        transaction.replace(R.id.adminframepage,contentFragment);
+                        break;
+                    case 1:
+                        contentFragment = new CustomerFragment();
+                        transaction.replace(R.id.adminframepage,contentFragment);
+                        break;
+                    case 2:
+                        contentFragment = new ProductFragment();
+                        transaction.replace(R.id.adminframepage,contentFragment);
+                        break;
+                    case 3:
+                        contentFragment = new OrderFragment();
+                        transaction.replace(R.id.adminframepage,contentFragment);
+                        break;
+                    case 4:
+                        contentFragment = new StorageFragment();
+                        transaction.replace(R.id.adminframepage,contentFragment);
+                        break;
+                    case 5:
+                        contentFragment = new SettingFragment();
+                        transaction.replace(R.id.adminframepage,contentFragment);
+                        break;
+                    case 6:
+                       Intent intent=new Intent(view.getContext(),login.class);
+                        startActivity(intent);
+                        break;
+                    default:
+                        break;
+
+                }
+                transaction.commit();
+
+            }
+        });
     }
 
-    public class MyPagerAdapter extends FragmentPagerAdapter {
-
-        private final List<String> catalogs = new ArrayList<String>();
-
-        public MyPagerAdapter(FragmentManager fm) {
-            super(fm);
-            catalogs.add(getString(R.string.category_allcustomer));
-            catalogs.add(getString(R.string.category_addcustomer));
-            catalogs.add(getString(R.string.category_vipcustomer));
-            catalogs.add(getString(R.string.category_novipcustomer));
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return catalogs.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return catalogs.size();
-        }
-
-        @Override
-        public android.support.v4.app.Fragment getItem(int position) {
-            return NewsFragment.newInstance(position);
-        }
-
+    //初始管理者页面的Framepage
+    private void initUi(){
+        //初始化管理者
+        fragmentManager = getFragmentManager();
+        transaction =fragmentManager.beginTransaction();
+        Fragment init=new AdminFragment();
+        transaction.replace(R.id.adminframepage,init,"fragment");
+        transaction.commit();
     }
+
 }

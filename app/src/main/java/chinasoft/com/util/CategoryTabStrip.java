@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -105,6 +106,7 @@ public class CategoryTabStrip extends HorizontalScrollView {
         tabCount = pager.getAdapter().getCount();
 
         for (int i = 0; i < tabCount; i++) {
+            Log.i("info",pager.getAdapter().getPageTitle(i).toString());
             addTab(i, pager.getAdapter().getPageTitle(i).toString());
         }
 

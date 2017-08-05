@@ -1,6 +1,5 @@
 package chinasoft.com.fragment;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -14,7 +13,7 @@ import android.widget.TextView;
  * Created by Ｓａｎｄｙ on 2017/8/5.
  */
 
-public class NewsFragment extends Fragment {
+public class NewsFragment extends android.app.Fragment {
     private static final String ARG_POSITION = "position";
 
     private int position;
