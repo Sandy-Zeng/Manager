@@ -1,23 +1,19 @@
 package chinasoft.com.logindemo;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -158,48 +154,23 @@ public class login extends Activity {
 
     //弹出popwindow
     public void show(View view){
-        showPopupWindow(view);
-    }
-    public void showPopupWindow(View view){
-        View contentView = LayoutInflater.from(login.this).inflate(R.layout.oauth,null);
-        final PopupWindow popupWindow=new PopupWindow(contentView, ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT,true);
-        popupWindow.setTouchable(true);
+        new AlertDialog.Builder(login.this).setTitle("正在授权登录")
+                .setView(LayoutInflater.from(login.this).inflate(R.layout.oauthing,null))
+                .create().show();
+        //3秒后跳转
+        new Thread(){
+            public void run(){
+                super.run();
+                try{
+                    sleep(3000);
+                    Intent intent=new Intent(login.this,ShouyeDemo.class);
+                    startActivity(intent);
 
-        popupWindow.setTouchInterceptor(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                new AlertDialog.Builder(login.this).setTitle("正在授权登录")
-                        .setView(LayoutInflater.from(login.this).inflate(R.layout.oauthing,null))
-                        .create().show();
-                //3秒后跳转
-                new Thread(){
-                    public void run(){
-                        super.run();
-                        try{
-                            sleep(3000);
-                            Intent intent=new Intent(login.this,ShouyeDemo.class);
-                            startActivity(intent);
-
-                        }catch(InterruptedException e){
-                            e.printStackTrace();
-                        }
-                    }
-
-                }.start();
-                return false;
+                }catch(InterruptedException e){
+                    e.printStackTrace();
+                }
             }
-        });
-        int windowPos[]={250,1300};
-        //windowPos[0]
 
-        popupWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.oa_bg,null));
-        popupWindow.showAtLocation(view, Gravity.TOP | Gravity.START, windowPos[0],windowPos[1]);
-        popupWindow.showAsDropDown(view);
+        }.start();
     }
-
-
-
-
-
-
 }

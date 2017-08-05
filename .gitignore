@@ -1,3 +1,10 @@
 /build
 
 
+.gradle/
+.idea/libraries/
+.idea/workspace.xml
+LoginDemo.iml
+app/app.iml
+app/libs/
+local.properties

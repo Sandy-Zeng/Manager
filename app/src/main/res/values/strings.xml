@@ -4,4 +4,19 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="classify">产品分类</string>
+
+    <string name="category_allcustomer">所有客户</string>
+    <string name="category_addcustomer">添加客户</string>
+    <string name="category_vipcustomer">VIP客户</string>
+    <string name="category_novipcustomer">非VIP客户</string>
+    <string name="category_productlist">商品列表</string>
+    <string name="category_addproduct">添加商品</string>
+    <string name="category_brand">品牌管理</string>
+    <string name="category_addorder">添加订单</string>
+    <string name="category_orderlist">订单列表</string>
+    <string name="category_searchorder">订单查询</string>
+    <string name="category_storagelist">库存列表</string>
+    <string name="category_addstorage">入库</string>
+    <string name="category_minusstorage">出库</string>
+    <string name="category_recordlist">出入库记录</string>
 </resources>
