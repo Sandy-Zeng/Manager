@@ -19,4 +19,8 @@
     <string name="category_addstorage">入库</string>
     <string name="category_minusstorage">出库</string>
     <string name="category_recordlist">出入库记录</string>
+
+    <string name="action_settings">Settings</string>
+
+
 </resources>
