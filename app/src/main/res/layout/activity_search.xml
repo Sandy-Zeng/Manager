@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="chinasoft.com.logindemo.SearchActivity"
+    android:orientation="vertical"
+    android:background="@color/White"
+    android:id="@+id/searchLayout">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#FF80AB"
+        android:gravity="center"
+        >
+
+        <EditText
+            android:id="@+id/gosearch"
+            android:layout_width="0dp"
+            android:layout_weight="250"
+            android:layout_height="30dp"
+            android:hint="Search here..."
+            android:textColorHint="@color/appColor"
+            android:textColor="@color/appColor"
+            android:background="@drawable/searchedit"
+            android:padding="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:drawableLeft="@drawable/search"
+           />
+
+        <TextView
+            android:id="@+id/cancle"
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/White"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:background="@color/White">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="历史搜索"
+            android:textColor="@color/secFont"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"/>
+        <chinasoft.com.util.FlowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/historyLayout">
+            <!--<TextView
+                style="@style/text_flag_01"
+                android:background="@drawable/flag_02"
+                android:text="Welcome"
+                android:textColor="#888888" />
+
+            <TextView
+                style="@style/text_flag_01"
+                android:background="@drawable/flag_02"
+                android:text="IT工程师"
+                android:textColor="#888888" />
+
+            <TextView
+                style="@style/text_flag_01"
+                android:background="@drawable/flag_02"
+                android:text="学习ing"
+                android:textColor="#888888" />
+
+            <TextView
+                style="@style/text_flag_01"
+                android:background="@drawable/flag_02"
+                android:text="恋爱ing"
+                android:textColor="#888888" />
+
+            <TextView
+                style="@style/text_flag_01"
+                android:background="@drawable/flag_02"
+                android:text="挣钱ing"
+                android:textColor="#888888" />
+
+            <TextView
+                style="@style/text_flag_01"
+                android:background="@drawable/flag_02"
+                android:text="努力ing"
+                android:textColor="#888888" />
+
+            <TextView
+                style="@style/text_flag_01"
+                android:background="@drawable/flag_02"
+                android:text="I thick i can"
+                android:textColor="#888888" />-->
+        </chinasoft.com.util.FlowLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:background="@color/White">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分类搜索"
+            android:textColor="@color/secFont"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"/>
+        <chinasoft.com.util.FlowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fenleiLayout">
+
+        </chinasoft.com.util.FlowLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:background="@color/White">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="品牌搜索"
+            android:textColor="@color/secFont"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"/>
+        <chinasoft.com.util.FlowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/brandLayout">
+
+        </chinasoft.com.util.FlowLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

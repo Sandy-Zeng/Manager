@@ -14,6 +14,7 @@
         android:gravity="center" >
 
         <EditText
+            android:id="@+id/gosearch"
             android:layout_width="300dp"
             android:layout_height="30dp"
             android:hint="Search here..."
@@ -23,7 +24,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:drawableLeft="@drawable/search"
-            />
+            android:focusable="false"
+            android:onClick="goSearch"/>
 
         <!--<Button
             android:layout_width="0dp"

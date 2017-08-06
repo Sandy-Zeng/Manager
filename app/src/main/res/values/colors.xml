@@ -14,6 +14,7 @@
     <color name="White">#ffffff</color>
     <color name="secFont">#999999</color>
     <color name="appColor">#FF80AB</color>
+    <color name="item">#888888</color>
 
     <color name="category_tab_text">#ff707070</color>
     <color name="category_tab_text_dark">#fffafafa</color>

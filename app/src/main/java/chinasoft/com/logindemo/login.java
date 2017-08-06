@@ -2,6 +2,7 @@ package chinasoft.com.logindemo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
+import chinasoft.com.dbutil.CustomerHelper;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -36,10 +38,34 @@ public class login extends Activity {
             super.handleMessage(msg);
             if(msg.what==1){
                 String result=(String) msg.obj;
+                //String result="ok";
                 Log.i("info",result);
                 if(result.equals("ok")) {
+                    //将当前登录用户的用户名和密码保存
+                    String user=username.getText().toString();
+                    String pwd = password.getText().toString();
+                    Context context=login.this;
+                    SharedPreferences sharedPre=context.getSharedPreferences("user", context.MODE_PRIVATE);
+                    //获取Editor对象
+                    SharedPreferences.Editor editor=sharedPre.edit();
+                    //设置参数
+                    editor.putString("username", user);
+                    editor.putString("password", pwd);
+                    //提交
+                    editor.commit();
+
+                    //如果客户不存在在SQLite数据库中就存进去
+                    CustomerHelper customerHelper = new CustomerHelper();
+                    if(!customerHelper.hasCustomer(user))
+                    {
+                        customerHelper.insert(user);
+                    }
+                    customerHelper.closeDB();
+
+                    //跳转到首页
                     Intent intent = new Intent(login.this, ShouyeDemo.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         }
@@ -59,7 +85,7 @@ public class login extends Activity {
         password=(EditText)findViewById(R.id.password);
         remember=(CheckBox)findViewById(R.id.remember);
 
-        sp = getSharedPreferences("msg",MODE_PRIVATE);
+        sp = getSharedPreferences("msg",MODE_PRIVATE);//设置SharedPreferences对象
         String user = sp.getString("username","");
         username.setText(user);
         String pass = sp.getString("password","");
@@ -116,6 +142,10 @@ public class login extends Activity {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.i("info","链接失败");
+                /*Message message =new Message();
+                message.what=1;
+                message.obj ="ok";
+                handler.sendMessage(message);*/
             }
 
             @Override
