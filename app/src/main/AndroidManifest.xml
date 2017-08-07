@@ -14,19 +14,26 @@
         android:icon="@mipmap/logo"
         android:label="@string/navigation_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
         <activity android:name=".login" />
         <activity android:name=".Register" />
         <activity
             android:name=".Loding"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
-        <activity android:name=".ShouyeDemo" />
-        <activity android:name=".LoadingActivity">
+        <activity
+            android:name=".ShouyeDemo"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".AdminMain"
+            android:theme="@style/NotitleTheme">
+
         </activity>
     </application>
 
