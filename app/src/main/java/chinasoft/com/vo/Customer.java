@@ -9,13 +9,16 @@ import java.util.List;
  * Created by Ｓａｎｄｙ on 2017/8/6.
  */
 
-public class Customer extends DataSupport {
+public class Customer extends DataSupport implements Comparable {
     private Integer id;
     private String username;//用户名
     private List<Record> recordList;//搜索记录
     private List<Cart> cartList;//购物车
     private List<Like> likeList;//收藏列表
     private List<History> historyList;//足迹
+    String index;
+
+
 
     public Customer(){
         recordList=new ArrayList<>();
@@ -23,6 +26,15 @@ public class Customer extends DataSupport {
         likeList=new ArrayList<>();
         historyList=new ArrayList<>();
     }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
+    }
+
     public Customer(String username) {
         this.username = username;
         recordList=new ArrayList<>();
@@ -78,5 +90,14 @@ public class Customer extends DataSupport {
 
     public void setHistoryList(List<History> historyList) {
         this.historyList = historyList;
+    }
+
+    @Override
+    public int compareTo(Object another) {
+        if(another == null || !(another instanceof Customer)){
+            return -1;
+        }
+        Customer other = (Customer)another;
+        return index.compareTo(other.getIndex());
     }
 }

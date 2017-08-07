@@ -21,11 +21,6 @@
         <activity
             android:name=".Loding"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
         <activity
             android:name=".ShouyeDemo"
@@ -33,7 +28,13 @@
         </activity>
         <activity
             android:name=".AdminMain"
-            android:theme="@style/NotitleTheme"></activity>
+            android:theme="@style/NotitleTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".SearchActivity"
             android:theme="@style/NotitleTheme" ></activity>
     </application>
