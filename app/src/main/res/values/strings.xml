@@ -4,4 +4,12 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="classify">产品分类</string>
+
+    <string name="appbar_overscroll_behavior">chinasoft.com.behavior.AppBarLayoutOverScrollViewBehavior</string>
+    <string name="appbar_circleimageview_behavior">chinasoft.com.behavior.CircleImageInUsercBehavior</string>
+    <string name="appbar_coali_behavior">chinasoft.com.behavior.CoAliRefreshBehavior</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
