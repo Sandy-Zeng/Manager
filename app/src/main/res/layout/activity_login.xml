@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="chinasoft.com.logindemo.login"
-    android:background="#ffffff">
+    android:background="@drawable/bg1">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="80dp"
-        android:src="@drawable/loginlogo" />
+        />
 
     <EditText
         android:id="@+id/username"
@@ -94,7 +94,7 @@
         android:layout_marginTop="10dp"
         android:textColor="@color/colorLogin"/>
 
-    <!--<RelativeLayout
+    <RelativeLayout
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -130,7 +130,8 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/weixin" />
+                android:src="@drawable/weixin"
+                android:onClick="show"/>
 
             <TextView
                 android:layout_width="50dp"
@@ -149,7 +150,8 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/weibo" />
+                android:src="@drawable/weibo"
+                android:onClick="show"/>
 
             <TextView
                 android:layout_width="50dp"
@@ -160,8 +162,7 @@
 
 
     </RelativeLayout>
--->
-    <Button
+    <!--<Button
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:text="第三方授权登录"
@@ -170,5 +171,5 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:onClick="show"
-        />
+        />-->
 </LinearLayout>

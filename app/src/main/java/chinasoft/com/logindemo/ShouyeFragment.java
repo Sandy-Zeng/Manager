@@ -45,8 +45,8 @@ public class ShouyeFragment extends Fragment{
     private String[] price={"￥75","￥110","￥178","￥65","￥125","￥78","￥78","￥90","￥95","￥89"};
     private int[] stars={5,5,4,5,5,4,4,3,5,5};
 
-    private int[] items={R.drawable.kouhong,R.drawable.huazhuangshui,R.drawable.mianmo,R.drawable.xiangshui,R.drawable.fenbing,R.drawable.other};
-    private String[] name={"口红","化妆水","面膜","香水","粉饼","其他"};
+    private int[] items={R.drawable.mianshuang,R.drawable.mianmo,R.drawable.jiemian,R.drawable.hufutaozhuang,R.drawable.kouhong,R.drawable.fenbing,R.drawable.yanzhuang,R.drawable.other};
+    private String[] name={"面霜","面膜","洁面","护肤套装","唇妆","底妆","眼妆","更多分类"};
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
