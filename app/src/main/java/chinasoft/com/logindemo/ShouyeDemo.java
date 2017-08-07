@@ -150,6 +150,29 @@ public class ShouyeDemo extends Activity {
 
     }
 
+    public void biji(View view)
+    {
+        ImageView textView=(ImageView)view;
+           /* textView.setBackgroundColor(0XFFE4BA3F);
+            textView.setTextColor(0xff000000);*/
+        transaction=fragmentManager.beginTransaction();
+        switch (view.getId()){
+            case R.id.note:
+                contentFragment=new My_Note_Fragment();
+
+                transaction.replace(R.id.fragmentPageMy,contentFragment);
+                break;
+            case R.id.collection:
+                contentFragment=new My_Collection_Fragment();
+                transaction.replace(R.id.fragmentPageMy,contentFragment);
+                break;
+            default:
+                break;
+        }
+        transaction.commit();
+    }
+
+
 
     //搜索框的监听
     public void goSearch(View view){
