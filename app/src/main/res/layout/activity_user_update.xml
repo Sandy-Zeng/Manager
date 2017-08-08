@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="chinasoft.com.logindemo.UserUpdateActivity"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <LinearLayout style="@style/wrap_layout"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+        <LinearLayout style="@style/single_layout"
+            android:gravity="center">
+            <TextView style="@style/usertext"
+                android:text="修改个人资料"
+                android:gravity="center"
+                android:textSize="20sp"
+               />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout style="@style/wrap_layout"
+        android:gravity="center">
+        <!-- 上圆角-->
+        <LinearLayout style="@style/top_layout"
+            android:gravity="center">
+            <EditText
+                android:id="@+id/regisusername"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:layout_gravity="center_horizontal"
+                android:hint="  Username"
+                android:drawableLeft="@drawable/user"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@null"
+                android:background="@drawable/selectedittext"/>
+        </LinearLayout>
+
+        <!-- 分割线 -->
+        <View style="@style/bg_line"/>
+        <!-- 无圆角-->
+        <LinearLayout style="@style/mid_layout"
+            android:gravity="center">
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:inputType="phone"
+                android:layout_gravity="center_horizontal"
+                android:hint="  Phone"
+                android:drawableLeft="@drawable/phone"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@null"
+                android:background="@drawable/selectedittext"/>
+
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+        <LinearLayout style="@style/mid_layout"
+            android:gravity="center">
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:layout_gravity="center_horizontal"
+                android:hint="  Address"
+                android:drawableLeft="@drawable/phone"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@null"
+                android:background="@drawable/selectedittext"/>
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+        <LinearLayout style="@style/mid_layout"
+            android:gravity="center">
+            <EditText
+                android:id="@+id/regispassword"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:cursorVisible="true"
+                android:drawableLeft="@drawable/password1"
+                android:ems="10"
+                android:hint=" OldPassword"
+                android:inputType="textPassword"
+                android:textCursorDrawable="@null"
+                android:background="@drawable/selectedittext" />
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+
+        <!-- 下圆角-->
+        <LinearLayout style="@style/bottom_layout"
+            android:gravity="center">
+            <EditText
+                android:id="@+id/repassword"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:layout_gravity="center_horizontal"
+                android:hint=" NewPassword"
+                android:drawableLeft="@drawable/password1"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@null"
+                android:background="@drawable/selectedittext"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+            <Button
+                android:id="@+id/update"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Register"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="70dp"
+                android:background="@color/colorLogin"
+                android:textColor="#ffffff"
+                />
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Cancel"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="70dp"
+                android:background="@color/colorLogin"
+                android:textColor="#ffffff"/>
+
+        </LinearLayout>
+
+
+
+</LinearLayout>

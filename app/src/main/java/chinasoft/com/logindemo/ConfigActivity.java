@@ -1,6 +1,7 @@
 package chinasoft.com.logindemo;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.x;
 
 @ContentView(R.layout.activity_config)
@@ -61,6 +63,35 @@ public class ConfigActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_config, container, false);
             return rootView;
+        }
+    }
+
+    public void go(View view){
+        switch(view.getId()){
+            case R.id.user_msg:
+                Intent go_user_msg=new Intent(ConfigActivity.this,UserUpdateActivity.class);
+                startActivity(go_user_msg);
+                break;
+            case R.id.location:
+                Intent go_location=new Intent(ConfigActivity.this,LocationActivity.class);
+                startActivity(go_location);
+                break;
+            case R.id.universe:
+                Intent go_universe=new Intent(ConfigActivity.this,UniverseActivity.class);
+                startActivity(go_universe);
+                break;
+            case R.id.privacy:
+                Intent go_privacy=new Intent(ConfigActivity.this,PrivacyActivity.class);
+                startActivity(go_privacy);
+                break;
+            case R.id.about_us:
+                Intent go_about_us=new Intent(ConfigActivity.this,AboutUsActivity.class);
+                startActivity(go_about_us);
+                break;
+            case R.id.exit:
+                Intent go_register=new Intent(ConfigActivity.this,login.class);
+                startActivity(go_register);
+                break;
         }
     }
 

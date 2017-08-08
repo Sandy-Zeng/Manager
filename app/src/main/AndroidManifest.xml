@@ -38,12 +38,11 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".AdminMain"
-            android:theme="@style/NotitleTheme"></activity>
+            android:theme="@style/NotitleTheme" />
         <activity android:name=".IndexActivity" />
         <activity android:name=".AdminLogin" />
         <activity android:name=".AdminRegister" />
         <activity android:name=".ViewPagerlidingLayoutActivity">
-
 
         </activity>
         <activity android:name=".ConfigActivity">
@@ -52,6 +51,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".UserUpdateActivity" />
+        <activity android:name=".LocationActivity" />
+        <activity android:name=".UniverseActivity" />
+        <activity android:name=".PrivacyActivity" />
+        <activity android:name=".AboutUsActivity"></activity>
+        <activity android:name=".DropSortActivity">
 
         </activity>
     </application>

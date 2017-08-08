@@ -61,9 +61,9 @@ public class ViewPagerlidingLayoutActivity extends AppCompatActivity {
             @Override
             public void onStatueChanged(DragScrollDetailsLayout.CurrentTargetIndex status) {
                 if (status == DragScrollDetailsLayout.CurrentTargetIndex.UPSTAIRS)
-                    mTextView.setText("pull up to show more");
+                    mTextView.setText("下拉查看商品详情及评价");
                 else
-                    mTextView.setText("pull down to top");
+                    mTextView.setText("上拉回到顶部");
 
             }
         });
