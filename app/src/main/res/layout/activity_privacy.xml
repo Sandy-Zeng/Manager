@@ -13,10 +13,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <CheckBox
-                android:id="@+id/location"
+                android:id="@+id/through_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="  通过会员名找到我"
+                android:checked="true"
                 android:textSize="20sp"/>
             <TextView
                 android:layout_width="match_parent"
@@ -31,10 +32,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <CheckBox
-                android:id="@+id/message"
+                android:id="@+id/through_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="  通过手机号找到我"
+                android:checked="false"
                 android:textSize="20sp"/>
             <TextView
                 android:layout_width="match_parent"

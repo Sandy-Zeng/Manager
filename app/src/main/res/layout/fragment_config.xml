@@ -13,11 +13,14 @@
         <LinearLayout style="@style/single_layout">
             <TextView style="@style/usertext"
                 android:text="会员名"/>
-            <EditText
-                android:layout_marginRight="70dp"
+            <TextView
+                android:id="@+id/username"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/username"/>
+                android:layout_marginRight="70dp"
+                android:text="小仙女"
+                android:textSize="20sp"
+                />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 
