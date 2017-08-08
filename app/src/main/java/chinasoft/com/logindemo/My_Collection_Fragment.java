@@ -1,17 +1,21 @@
 package chinasoft.com.logindemo;
 
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import chinasoft.com.chinasoft.com.adapter.MyLikeAdapter;
+import chinasoft.com.dbutil.LikeHelper;
+import chinasoft.com.vo.Like;
 
 public class My_Collection_Fragment extends Fragment {
 
@@ -23,23 +27,36 @@ public class My_Collection_Fragment extends Fragment {
             "kiko403","kiko404","kiko405"};
     private String[]money={"70","80","70","70","80","80","70",
             "90","100","110"};
+    private List<Integer> pid = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
         View v=inflater.inflate(R.layout.fragment_my_collection, container, false);
+
+
+        LikeHelper likeHelper = new LikeHelper();
+        SharedPreferences sp = v.getContext().getSharedPreferences("user", v.getContext().MODE_PRIVATE);
+        //获取Editor对象
+        String username = sp.getString("username", "");
+        List<Like> likes = likeHelper.findAll(username);
+        for(int i=0;i<likes.size();i++)
+        {
+            pid.add(likes.get(i).getPid());
+        }
+
         //View v1=inflater.inflate(R.layout.note_listview, container, false);
         listView=(ListView)v.findViewById(R.id.listviewmy);
         String[]keys={"img","title","money"};
         int[]ids={R.id.item_img,R.id.item_title,R.id.item_money};
-        SimpleAdapter simpleAdapter=new SimpleAdapter(v.getContext(),lists,R.layout.collection_listview,keys,ids);
+        MyLikeAdapter simpleAdapter=new MyLikeAdapter(v.getContext(),lists,R.layout.collection_listview,keys,ids,pid);
         listView.setAdapter(simpleAdapter);
         //构造map
-        for(int i=0;i<imgIds.length;i++){
+        for(int i=0;i<likes.size();i++){
             Map<String,Object>map=new HashMap<>();
             map.put("img",imgIds[i]);
-            map.put("title",titles[i]);
+            map.put("title",Integer.toString(likes.get(i).getPid()));
             map.put("money",money[i]);
             lists.add(map);
         }

@@ -2,7 +2,6 @@ package chinasoft.com.chinasoft.com.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +10,19 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 import java.util.Map;
 
-import chinasoft.com.dbutil.LikeHelper;
+import chinasoft.com.dbutil.CartHelper;
 import chinasoft.com.logindemo.R;
 
 /**
- * Created by Ｓａｎｄｙ on 2017/8/2.
+ * Created by Ｓａｎｄｙ on 2017/8/9.
  */
 
-public class MySimpleAdapter extends SimpleAdapter {
+public class MyLikeAdapter extends SimpleAdapter {
     private int[] mTo;
     private String[] mFrom;
     private ViewBinder mViewBinder;
@@ -31,7 +31,7 @@ public class MySimpleAdapter extends SimpleAdapter {
     private int mDropDownResource;
     private LayoutInflater mInflater;
     private List<Integer> pid;
-    public MySimpleAdapter(Context context,
+    public MyLikeAdapter(Context context,
                            List<? extends Map<String, ?>> data, int resource, String[] from,
                            int[] to,List<Integer> pids) {
         super(context, data, resource, from, to);
@@ -65,27 +65,25 @@ public class MySimpleAdapter extends SimpleAdapter {
             v = convertView;
         }
         bindView(position, v);
-        final ImageView like = (ImageView)v.findViewById(R.id.like);
+        final ImageView cart = (ImageView)v.findViewById(R.id.addcart);
         final Integer k = position;
-        like.setOnClickListener(new View.OnClickListener() {
+        cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LikeHelper likeHelper = new LikeHelper();
                 Integer id = pid.get(k);
-                if(likeHelper.hasLike(id))
+                CartHelper cartHelper = new CartHelper();
+                if(cartHelper.hasCart(id))
                 {
-                    like.setImageResource(R.drawable.like_normal);
-                    likeHelper.deleteByPid(id);
-                }else{
-                    like.setImageResource(R.drawable.like_press);
+                    cartHelper.update(1,id);
+                }
+                else {
                     SharedPreferences sp = v.getContext().getSharedPreferences("user", v.getContext().MODE_PRIVATE);
                     //获取Editor对象
                     String username = sp.getString("username", "");
-                    Log.i("info", username);
-                    Log.i("info", Integer.toString(pid.get(k)));
-                    likeHelper.add(pid.get(k), username);
+                    cartHelper.add(pid.get(k), 1, username);
                 }
-                likeHelper.close();
+                cartHelper.close();
+                Toast.makeText(v.getContext(),"成功加入购物车",Toast.LENGTH_SHORT).show();
             }
         });
 
