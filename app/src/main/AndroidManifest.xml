@@ -41,6 +41,10 @@
         <activity android:name=".ChangeActivity">
 
         </activity>
+        <activity android:name=".SearchActivity"
+            android:theme="@style/NotitleTheme">
+
+        </activity>
     </application>
 
 </manifest>
