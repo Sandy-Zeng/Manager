@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="chinasoft.com.logindemo.AdminRegister"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="134dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo" />
+
+    <EditText
+        android:id="@+id/AdminName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="  AdminName"
+        android:drawableLeft="@drawable/user"
+        android:cursorVisible="true"
+        android:textCursorDrawable="@null"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/AdminPass"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="  Passwprd"
+        android:drawableLeft="@drawable/password1"
+        android:cursorVisible="true"
+        android:textCursorDrawable="@null"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/RePassword"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="  RePasswprd"
+        android:drawableLeft="@drawable/password1"
+        android:cursorVisible="true"
+        android:textCursorDrawable="@null"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/AdminJob"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="  Job"
+        android:drawableLeft="@drawable/phone"
+        android:cursorVisible="true"
+        android:textCursorDrawable="@null"
+        android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="28dp">
+
+        <Button
+            android:id="@+id/regist"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Register"
+            android:background="@color/colorLogin"
+            android:textColor="#ffffff"/>
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Cancel"
+            android:background="@color/colorLogin"
+            android:layout_marginLeft="50dp"
+            android:textColor="#ffffff"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
