@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -30,6 +31,7 @@ public class ShouyeFragment extends Fragment{
     private List<Map<String,Object>> lists=new ArrayList<>();
     private ListView listView;
     private GridView grid;
+    private EditText editText;
     int mList[]=new int[4];
 
     /**
@@ -51,10 +53,14 @@ public class ShouyeFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         final View v=inflater.inflate(R.layout.fragment_shouye,container,false);
-        listView=(ListView)v.findViewById(R.id.listView);
-        grid=(GridView)v.findViewById(R.id.grid);
+        listView=(ListView)v.findViewById(R.id.listView);//热门商品列表
+        grid=(GridView)v.findViewById(R.id.grid);//分类列表
+        editText=(EditText)v.findViewById(R.id.gosearch);//搜索框
+
         grid.setFocusable(false);
         listView.setFocusable(false);
+
+        //listView的列表适配器
         int[] Ids={R.id.img,R.id.title,R.id.place,R.id.price,R.id.stars,R.id.flag};
         String[] keys={"image","title","place","price","stars","flag"};
         MySimpleAdapter simpleAdapter=new MySimpleAdapter(v.getContext(),lists,R.layout.item_layout,keys,Ids);
@@ -72,6 +78,8 @@ public class ShouyeFragment extends Fragment{
             lists.add(map);
         }
 
+
+        //gridView的列表适配器
         class MyAdapter extends BaseAdapter {
             private Context mcontext;
             MyAdapter(Context context){
@@ -108,14 +116,9 @@ public class ShouyeFragment extends Fragment{
         MyAdapter myAdapter=new MyAdapter(v.getContext());
         grid.setAdapter(myAdapter);
 
+        //设置轮播图的数据
         initData();
         initView(v);
-
-
-        /**
-         * 轮播图点击监听
-         */
-
 
         return v;
     }
@@ -141,7 +144,9 @@ public class ShouyeFragment extends Fragment{
         mCycleViewPager.setData(mList, mAdCycleViewListener);
     }
 
-
+    /**
+     * 轮播图点击监听
+     */
     private CycleViewPager.ImageCycleViewListener mAdCycleViewListener = new CycleViewPager.ImageCycleViewListener() {
 
         @Override

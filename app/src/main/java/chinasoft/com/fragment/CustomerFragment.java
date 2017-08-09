@@ -34,6 +34,7 @@ public class CustomerFragment extends android.app.Fragment {
 
         pager.setAdapter(adapter);
         tabs.setViewPager(pager);
+        pager.setCurrentItem(0);
 
 
         return v;
@@ -63,7 +64,16 @@ public class CustomerFragment extends android.app.Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            return NewsFragment.newInstance(position);
+            switch(position){
+                case 0:
+                    return AllCustomerFragment.newInstance(0);
+                case 2:
+                    return AllCustomerFragment.newInstance(2);
+                case 3:
+                    return AllCustomerFragment.newInstance(3);
+                default:
+                    return NewsFragment.newInstance(position);
+            }
         }
 
     }
