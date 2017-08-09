@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#FF80AB"
+        android:gravity="center" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/White"
+            android:text="购物车"
+            android:textSize="20sp"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+
+    <chinasoft.com.util.SlideListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitle">
+
+    </chinasoft.com.util.SlideListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#ffffff">
+
+        <chinasoft.com.util.MyCheckBox
+            android:id="@+id/check2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            app:color_background="#FFF44336"
+            app:color_border="@color/secFont"
+            app:size="20dp"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全选"
+            android:textSize="15sp"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="合计："
+            android:layout_marginLeft="60dp"
+            android:textSize="15sp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/totalprice"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="￥0"
+            android:textColor="@color/colorFont"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="不含运费"
+            android:textSize="12sp"
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/secFont"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="结算"
+            android:layout_marginLeft="8dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button"
+            android:textColor="@color/White"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+</RelativeLayout>

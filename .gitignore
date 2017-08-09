@@ -1,6 +1,6 @@
 /build
-
-
+.DS_Store
+*.iml
 .gradle/
 .idea/libraries/
 .idea/workspace.xml
@@ -8,3 +8,6 @@ LoginDemo.iml
 app/app.iml
 app/libs/
 local.properties
+/captures
+
+.externalNativeBuild

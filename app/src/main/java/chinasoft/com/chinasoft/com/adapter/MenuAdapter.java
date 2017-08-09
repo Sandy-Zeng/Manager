@@ -23,6 +23,7 @@ public class MenuAdapter extends BaseAdapter {
     public MenuAdapter(Context context) {
         this.context = context;
         list = new ArrayList();
+        list.add("首页");
         list.add("客户管理");
         list.add("商品管理");
         list.add("库存管理");

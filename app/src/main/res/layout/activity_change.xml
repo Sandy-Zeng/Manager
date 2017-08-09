@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/changebg">
+    <Button
+        android:layout_marginTop="80dp"
+        android:id="@+id/userlogin"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/changeloginuser"
+        android:onClick="change"
+        android:text="用户登录"/>
+    <Button
+        android:id="@+id/adminlogin"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="管理员登录"
+        android:onClick="change"
+        android:background="@drawable/changelogin"/>
+       <!-- android:background="@drawable/changelogin"-->
+
+</LinearLayout>
+

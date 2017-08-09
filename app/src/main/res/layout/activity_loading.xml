@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <chinasoft.com.logindemo.PreviewVideoView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/vv_preview"/>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/vp_image"></android.support.v4.view.ViewPager>
+
+
+    <chinasoft.com.logindemo.PreviewIndicator
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="78dp"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="horizontal"
+        android:id="@+id/indicator"></chinasoft.com.logindemo.PreviewIndicator>
+</RelativeLayout>

@@ -1,6 +1,5 @@
 package chinasoft.com.fragment;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -14,7 +13,7 @@ import android.widget.TextView;
  * Created by Ｓａｎｄｙ on 2017/8/5.
  */
 
-public class NewsFragment extends Fragment {
+public class NewsFragment extends android.app.Fragment {
     private static final String ARG_POSITION = "position";
 
     private int position;
@@ -37,11 +36,14 @@ public class NewsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+       /*宽和高的设置*/
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
+        /*设置布局*/
         FrameLayout fl = new FrameLayout(getActivity());
         fl.setLayoutParams(params);
 
+        /*转化为标准尺寸*/
         final int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources()
                 .getDisplayMetrics());
 

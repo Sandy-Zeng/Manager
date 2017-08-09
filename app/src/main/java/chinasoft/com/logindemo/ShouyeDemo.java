@@ -2,6 +2,8 @@ package chinasoft.com.logindemo;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -59,7 +61,7 @@ public class ShouyeDemo extends Activity {
         transaction.commit();
         //shouye.setBackgroundColor(getResources().getColor(R.color.colorLogin));
         shouyeView.setImageResource(R.drawable.shouye_press);
-        shouye.setTextColor(getResources().getColor(R.color.colorLogin));
+        shouye.setTextColor(getResources().getColor(R.color.appColor));
     }
 
 
@@ -87,28 +89,28 @@ public class ShouyeDemo extends Activity {
                 contentFragment = new ShouyeFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //shouye.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                shouye.setTextColor(getResources().getColor(R.color.colorLogin));
+                shouye.setTextColor(getResources().getColor(R.color.appColor));
                 shouyeView.setImageResource(R.drawable.shouye_press);
                 break;
             case R.id.shouyeView:
                 contentFragment = new ShouyeFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //shouye.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                shouye.setTextColor(getResources().getColor(R.color.colorLogin));
+                shouye.setTextColor(getResources().getColor(R.color.appColor));
                 shouyeView.setImageResource(R.drawable.shouye_press);
                 break;
             case R.id.blog:
                 contentFragment = new BlogFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //blog.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                blog.setTextColor(getResources().getColor(R.color.colorLogin));
+                blog.setTextColor(getResources().getColor(R.color.appColor));
                 blogView.setImageResource(R.drawable.blog_press);
                 break;
             case R.id.blogView:
                 contentFragment = new BlogFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //blog.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                blog.setTextColor(getResources().getColor(R.color.colorLogin));
+                blog.setTextColor(getResources().getColor(R.color.appColor));
                 blogView.setImageResource(R.drawable.blog_press);
                 break;
 
@@ -116,34 +118,74 @@ public class ShouyeDemo extends Activity {
                 contentFragment = new CartFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //cart.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                cart.setTextColor(getResources().getColor(R.color.colorLogin));
+                cart.setTextColor(getResources().getColor(R.color.appColor));
                 cartView.setImageResource(R.drawable.cart_press);
                 break;
             case R.id.cartView:
                 contentFragment = new CartFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //cart.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                cart.setTextColor(getResources().getColor(R.color.colorLogin));
+                cart.setTextColor(getResources().getColor(R.color.appColor));
                 cartView.setImageResource(R.drawable.cart_press);
                 break;
             case R.id.my:
                 contentFragment = new MyFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //my.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                my.setTextColor(getResources().getColor(R.color.colorLogin));
+                my.setTextColor(getResources().getColor(R.color.appColor));
                 myView.setImageResource(R.drawable.my_press);
                 break;
             case R.id.myView:
                 contentFragment = new MyFragment();
                 transaction.replace(R.id.fragmentPage,contentFragment);
                 //my.setBackgroundColor(getResources().getColor(R.color.colorLogin));
-                my.setTextColor(getResources().getColor(R.color.colorLogin));
+                my.setTextColor(getResources().getColor(R.color.appColor));
                 myView.setImageResource(R.drawable.my_press);
+                break;
+
+            default:
+                break;
+        }
+        transaction.commit();
+
+    }
+
+    public void biji(View view)
+    {
+        ImageView textView=(ImageView)view;
+           /* textView.setBackgroundColor(0XFFE4BA3F);
+            textView.setTextColor(0xff000000);*/
+        transaction=fragmentManager.beginTransaction();
+        switch (view.getId()){
+            case R.id.note:
+                contentFragment=new My_Note_Fragment();
+
+                transaction.replace(R.id.fragmentPageMy,contentFragment);
+                break;
+            case R.id.collection:
+                contentFragment=new My_Collection_Fragment();
+                transaction.replace(R.id.fragmentPageMy,contentFragment);
                 break;
             default:
                 break;
         }
         transaction.commit();
+    }
+
+
+
+    //搜索框的监听
+    public void goSearch(View view){
+        Intent intent = new Intent(view.getContext(), SearchActivity.class);
+
+        //创建一个rect 对象来存储共享元素的位置信息
+        Rect rect = new Rect();
+        //获取元素的位置信息
+        view.getGlobalVisibleRect(rect);
+        //将位置信息附加到intent 上
+        intent.setSourceBounds(rect);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
 
     }
 

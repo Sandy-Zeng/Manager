@@ -24,13 +24,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="15dp"
-            android:text="SlidingMenu"
+            android:text="是仙女呀"
             android:textColor="#ffffff"
             android:textSize="22sp" />
     </LinearLayout>
 
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout
+        android:id="@+id/adminframepage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="92">
+
+    </FrameLayout>
+
+
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/main_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -41,7 +50,7 @@
             android:layout_width="fill_parent"
             android:layout_height="@dimen/top_category_height"
             android:background="@drawable/bg_category_bar">
-            <!--android:layout_below="@id/title_bar"-->
+            &lt;!&ndash;android:layout_below="@id/title_bar"&ndash;&gt;
 
 
             <ImageView
@@ -76,6 +85,6 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_below="@id/category_layout" />
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 </LinearLayout>

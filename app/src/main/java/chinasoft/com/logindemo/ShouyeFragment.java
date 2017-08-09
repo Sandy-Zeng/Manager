@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import chinasoft.com.chinasoft.com.adapter.MySimpleAdapter;
+import chinasoft.com.dbutil.LikeHelper;
 import chinasoft.com.util.CycleViewPager;
 
 /**
@@ -30,6 +32,8 @@ public class ShouyeFragment extends Fragment{
     private List<Map<String,Object>> lists=new ArrayList<>();
     private ListView listView;
     private GridView grid;
+    private EditText editText;
+    private ImageView  imageView;
     int mList[]=new int[4];
 
     /**
@@ -38,6 +42,7 @@ public class ShouyeFragment extends Fragment{
     CycleViewPager mCycleViewPager;
     private int[] image={R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4,R.drawable.p5,R.drawable.p6,
             R.drawable.p7,R.drawable.p8,R.drawable.p9,R.drawable.p10};
+    private List<Integer> pid = new ArrayList<>();
     private String[] title={"薏仁水","sofina妆前乳","DMC欣兰冻膜","肌美精3D面膜","城野医生毛孔收敛水","sana豆乳化妆水","sana豆乳乳液",
             "sana叶绿素美背喷雾","canmake透亮美肌粉饼","5色眼影14色"};
     private String[] place={"日本","日本","台湾","日本","日本","日本","日本","日本","日本","日本"};
@@ -51,14 +56,23 @@ public class ShouyeFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         final View v=inflater.inflate(R.layout.fragment_shouye,container,false);
-        listView=(ListView)v.findViewById(R.id.listView);
-        grid=(GridView)v.findViewById(R.id.grid);
+        listView=(ListView)v.findViewById(R.id.listView);//热门商品列表
+        grid=(GridView)v.findViewById(R.id.grid);//分类列表
+        editText=(EditText)v.findViewById(R.id.gosearch);//搜索框
+
+        pid.add(1);
+        pid.add(2);
+        pid.add(3);pid.add(4);pid.add(5);pid.add(6);pid.add(7);pid.add(8);pid.add(9);pid.add(10);
+
         grid.setFocusable(false);
         listView.setFocusable(false);
-        int[] Ids={R.id.img,R.id.title,R.id.place,R.id.price,R.id.stars,R.id.flag};
-        String[] keys={"image","title","place","price","stars","flag"};
-        MySimpleAdapter simpleAdapter=new MySimpleAdapter(v.getContext(),lists,R.layout.item_layout,keys,Ids);
+
+        //listView的列表适配器
+        int[] Ids={R.id.img,R.id.title,R.id.place,R.id.price,R.id.stars,R.id.flag,R.id.like};
+        String[] keys={"image","title","place","price","stars","flag","like"};
+        MySimpleAdapter simpleAdapter=new MySimpleAdapter(v.getContext(),lists,R.layout.item_layout,keys,Ids,pid);
         listView.setAdapter(simpleAdapter);
+        LikeHelper likeHelper = new LikeHelper();
         for(int i=0;i<image.length;i++) {
             Map<String, Object> map = new HashMap<>();
             //RatingBar ratingBar = (RatingBar) findViewById(R.id.stars);
@@ -69,9 +83,16 @@ public class ShouyeFragment extends Fragment{
             map.put("price", price[i]);
             map.put("stars",stars[i]);
             map.put("flag",flags[i]);
+
+            if(likeHelper.hasLike(pid.get(i)))
+                map.put("like",R.drawable.like_press);
+            else
+                map.put("like",R.drawable.like_normal);
             lists.add(map);
         }
 
+
+        //gridView的列表适配器
         class MyAdapter extends BaseAdapter {
             private Context mcontext;
             MyAdapter(Context context){
@@ -108,14 +129,9 @@ public class ShouyeFragment extends Fragment{
         MyAdapter myAdapter=new MyAdapter(v.getContext());
         grid.setAdapter(myAdapter);
 
+        //设置轮播图的数据
         initData();
         initView(v);
-
-
-        /**
-         * 轮播图点击监听
-         */
-
 
         return v;
     }
@@ -141,7 +157,9 @@ public class ShouyeFragment extends Fragment{
         mCycleViewPager.setData(mList, mAdCycleViewListener);
     }
 
-
+    /**
+     * 轮播图点击监听
+     */
     private CycleViewPager.ImageCycleViewListener mAdCycleViewListener = new CycleViewPager.ImageCycleViewListener() {
 
         @Override
