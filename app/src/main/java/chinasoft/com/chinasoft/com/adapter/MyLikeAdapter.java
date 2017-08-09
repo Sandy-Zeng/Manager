@@ -72,6 +72,7 @@ public class MyLikeAdapter extends SimpleAdapter {
             public void onClick(View v) {
                 Integer id = pid.get(k);
                 CartHelper cartHelper = new CartHelper();
+                cart.setImageResource(R.drawable.collection_cart_full);
                 if(cartHelper.hasCart(id))
                 {
                     cartHelper.update(1,id);

@@ -42,7 +42,7 @@ public class MySimpleAdapter extends SimpleAdapter {
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         pid = pids;
     }
-    public View getView(int position, final View convertView, ViewGroup parent) {
+       public View getView(int position, final View convertView, ViewGroup parent) {
         return createViewFromResource(position, convertView, parent, mResource);
     }
 

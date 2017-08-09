@@ -27,9 +27,9 @@ public class CartHelper {
         Cart cart = new Cart(pid,num,customer);
         cart.save();
     }
-    public void delete(Integer cid)
+    public void delete(Integer pid)
     {
-        Cart cart = this.find(cid);
+        Cart cart = this.findByPid(pid);
         cart.delete();
     }
 
@@ -40,6 +40,14 @@ public class CartHelper {
         {
             carts.get(i).delete();
         }
+    }
+
+    public void update(Integer pid,Integer number)
+    {
+        Cart cart = this.findByPid(pid);
+        ContentValues cv = new ContentValues();
+        cv.put("num",number);
+        DataSupport.update(Cart.class,cv,cart.getId());
     }
 
 
