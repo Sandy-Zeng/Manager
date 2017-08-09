@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class OrderFragment extends Fragment {
         pager.setAdapter(adapter);
         tabs.setViewPager(pager);
 
+        pager.setCurrentItem(0);
 
         return v;
     }
@@ -61,6 +63,15 @@ public class OrderFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
+            Log.i("info",Integer.toString(position));
+             switch (position){
+                case 0:
+                    return Order0Fragment.newInstance(position);
+                case 1:
+                    return Order1Fragment.newInstance(position);
+                 case 2:
+                     return Order2Fragment.newInstance(position);
+        }
             return NewsFragment.newInstance(position);
         }
 
