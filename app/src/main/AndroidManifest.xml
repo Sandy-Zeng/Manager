@@ -48,14 +48,8 @@
         <activity android:name=".PrivacyActivity" />
         <activity android:name=".AboutUsActivity" />
         <activity android:name=".DropSortActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
-        <activity android:name=".AreaActivity" />
         <activity android:name=".ContectActivity"></activity>
         <activity
             android:name=".AdminMain"
@@ -65,6 +59,11 @@
         <activity
             android:name=".LoadingActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".ChangeActivity"></activity>
