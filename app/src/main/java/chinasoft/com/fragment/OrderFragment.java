@@ -29,7 +29,7 @@ public class OrderFragment extends Fragment {
         final View v=inflater.inflate(R.layout.order_fragment,container,false);
 
         tabs = (CategoryTabStrip)v.findViewById(R.id.category_strip);
-        pager = (ViewPager)v.findViewById(R.id.view_pager);
+        pager = (ViewPager)v.findViewById(R.id.oview_pager);
         adapter = new MyPagerAdapter(getFragmentManager());
 
         pager.setAdapter(adapter);

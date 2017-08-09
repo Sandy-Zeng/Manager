@@ -32,12 +32,18 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import chinasoft.com.dbutil.RecordSQLiteOpenHelper;
 import chinasoft.com.util.FlowLayout;
 import chinasoft.com.vo.Record;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 @ContentView(R.layout.activity_search)
 public class SearchActivity extends AppCompatActivity {
@@ -126,6 +132,13 @@ public class SearchActivity extends AppCompatActivity {
                     // 隐藏键盘，这里getCurrentFocus()需要传入Activity对象，如果实际不需要的话就不用隐藏键盘了，免得传入Activity对象，这里就先不实现了
 //                    ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
 //                            getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    Request request =new Request.Builder().url("http://192.168.40.14:8080/dgManager/Product_findAllProduct")
+                            .get()
+                            .build();
+                    //Request request=builder.url("http://192.168.40.14:8080/dgManager/userlogin").post(formBody).build();
+                    exec(request);
+
+
 
                     // 按完搜索键后将当前查询的关键字保存起来,如果该关键字已经存在就不执行保存
                     RecordSQLiteOpenHelper recordSQLiteOpenHelper=new RecordSQLiteOpenHelper();
@@ -144,6 +157,46 @@ public class SearchActivity extends AppCompatActivity {
         });
 
     }
+
+    private void exec(Request request){
+        OkHttpClient okHttpClient=new OkHttpClient();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.i("info","链接失败");
+                /*Message message =new Message();
+                message.what=1;
+                message.obj ="ok";
+                handler.sendMessage(message);*/
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.i("info","链接成功");
+                String s=response.body().string();
+                Message message =new Message();
+                message.what=1;
+                message.obj =s;
+                handler.sendMessage(message);
+            }
+        });
+    }
+
+    Handler handler=new Handler(){
+        public void handleMessage(Message msg){
+            super.handleMessage(msg);
+            if(msg.what==1){
+                String result=(String) msg.obj;
+                //String result="ok";
+                Log.i("info",result);
+                if(result.equals("ok")) {
+
+                }
+            }
+        }
+
+    };
+
 
     //初始化数据
     protected  void initData(){

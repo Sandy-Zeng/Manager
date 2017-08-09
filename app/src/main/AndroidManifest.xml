@@ -23,15 +23,16 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".ShouyeDemo"
-            android:windowSoftInputMode="stateHidden"></activity>
-        <activity
-            android:name=".AdminMain"
-            android:theme="@style/NotitleTheme">
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".AdminMain"
+            android:theme="@style/NotitleTheme">
         </activity>
         <activity
             android:name=".LoadingActivity"

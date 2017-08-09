@@ -28,11 +28,12 @@ public class StorageFragment extends Fragment {
         final View v=inflater.inflate(R.layout.storage_fragment,container,false);
 
         tabs = (CategoryTabStrip)v.findViewById(R.id.category_strip);
-        pager = (ViewPager)v.findViewById(R.id.view_pager);
+        pager = (ViewPager)v.findViewById(R.id.sview_pager);
         adapter = new MyPagerAdapter(getFragmentManager());
 
         pager.setAdapter(adapter);
         tabs.setViewPager(pager);
+        pager.setCurrentItem(0);
 
 
         return v;
