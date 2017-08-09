@@ -36,11 +36,14 @@ public class NewsFragment extends android.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+       /*宽和高的设置*/
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
+        /*设置布局*/
         FrameLayout fl = new FrameLayout(getActivity());
         fl.setLayoutParams(params);
 
+        /*转化为标准尺寸*/
         final int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources()
                 .getDisplayMetrics());
 

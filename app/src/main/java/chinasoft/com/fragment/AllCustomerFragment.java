@@ -97,7 +97,7 @@ public class AllCustomerFragment extends Fragment {
             Log.i("info",name);
             String index = getSpells(c.getUsername());
             Log.i("info",index);
-            c.setIndex(getSpells(c.getUsername()));
+            c.setIndex1(getSpells(c.getUsername()));
         }
         Collections.sort(customers);
         CustomerSelectorAdapter adapter = new CustomerSelectorAdapter(view.getContext(),customers);
@@ -121,7 +121,7 @@ public class AllCustomerFragment extends Fragment {
             Log.i("info",name);
             String index = getSpells(c.getUsername());
             Log.i("info",index);
-            c.setIndex(getSpells(c.getUsername()));
+            c.setIndex1(getSpells(c.getUsername()));
         }
         Collections.sort(customers);
         CustomerSelectorAdapter adapter = new CustomerSelectorAdapter(view.getContext(),customers);
@@ -145,7 +145,7 @@ public class AllCustomerFragment extends Fragment {
             Log.i("info",name);
             String index = getSpells(c.getUsername());
             Log.i("info",index);
-            c.setIndex(getSpells(c.getUsername()));
+            c.setIndex1(getSpells(c.getUsername()));
         }
         Collections.sort(customers);
         CustomerSelectorAdapter adapter = new CustomerSelectorAdapter(view.getContext(),customers);

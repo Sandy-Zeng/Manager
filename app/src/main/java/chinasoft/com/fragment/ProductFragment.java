@@ -33,7 +33,7 @@ public class ProductFragment extends Fragment {
 
         pager.setAdapter(adapter);
         tabs.setViewPager(pager);
-
+        // pager.setCurrentItem(0);
 
         return v;
     }
@@ -61,6 +61,14 @@ public class ProductFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
+            switch (position){
+                case 0:
+                    return Product0Fragment.newInstance(position);
+                case 1:
+                    return Product1Fragment.newInstance(position);
+                case 2:
+                    return Product2Fragment.newInstance(position);
+            }
             return NewsFragment.newInstance(position);
         }
 

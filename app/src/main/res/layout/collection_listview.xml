@@ -59,14 +59,14 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/listviewbutton"
-                android:src="@drawable/mycart"/>
+                android:src="@drawable/collection_cart_empty"/>
             <ImageButton
                 android:id="@+id/cancelcollection"
                 android:layout_marginTop="5dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/listviewbutton"
-                android:src="@drawable/collection"
+                android:src="@drawable/like_press"
                 />
         </LinearLayout>
     </LinearLayout>

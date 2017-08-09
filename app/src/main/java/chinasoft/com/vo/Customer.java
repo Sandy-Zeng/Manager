@@ -16,7 +16,7 @@ public class Customer extends DataSupport implements Comparable {
     private List<Cart> cartList;//购物车
     private List<Like> likeList;//收藏列表
     private List<History> historyList;//足迹
-    String index;
+    private String index1;
 
 
 
@@ -27,12 +27,12 @@ public class Customer extends DataSupport implements Comparable {
         historyList=new ArrayList<>();
     }
 
-    public String getIndex() {
-        return index;
+    public String getIndex1() {
+        return index1;
     }
 
-    public void setIndex(String index) {
-        this.index = index;
+    public void setIndex1(String index) {
+        this.index1 = index;
     }
 
     public Customer(String username) {
@@ -98,6 +98,6 @@ public class Customer extends DataSupport implements Comparable {
             return -1;
         }
         Customer other = (Customer)another;
-        return index.compareTo(other.getIndex());
+        return index1.compareTo(other.getIndex1());
     }
 }
