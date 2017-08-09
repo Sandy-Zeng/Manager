@@ -42,24 +42,22 @@
         <activity android:name=".IndexActivity" />
         <activity android:name=".AdminLogin" />
         <activity android:name=".AdminRegister" />
-        <activity android:name=".ViewPagerlidingLayoutActivity">
-
-        </activity>
-        <activity android:name=".ConfigActivity">
+        <activity android:name=".ViewPagerlidingLayoutActivity"></activity>
+        <activity android:name=".ConfigActivity" />
+        <activity android:name=".UserUpdateActivity" />
+        <activity android:name=".LocationActivity" />
+        <activity android:name=".UniverseActivity" />
+        <activity android:name=".PrivacyActivity" />
+        <activity android:name=".AboutUsActivity" />
+        <activity android:name=".DropSortActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserUpdateActivity" />
-        <activity android:name=".LocationActivity" />
-        <activity android:name=".UniverseActivity" />
-        <activity android:name=".PrivacyActivity" />
-        <activity android:name=".AboutUsActivity"></activity>
-        <activity android:name=".DropSortActivity">
-
-        </activity>
+        <activity android:name=".AreaActivity" />
+        <activity android:name=".ContectActivity"></activity>
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import chinasoft.com.logindemo.R;
@@ -28,7 +29,8 @@ public class FragmentItem2 extends Fragment {
             list.setAdapter(new BaseAdapter() {
                 @Override
                 public int getCount() {
-                    return 60;
+                    return 3;//设置默认商品详情三张图片
+                   //return list.getCount();
                 }
 
                 @Override
@@ -47,6 +49,9 @@ public class FragmentItem2 extends Fragment {
                     Button button=new Button(getActivity());
                     button.setText(""+i);
                     return button;
+//                    ImageView imageView=new ImageView(getActivity());
+//                    //imageView.set
+//                    return null;
                 }
             });
         }else {

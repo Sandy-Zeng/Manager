@@ -47,6 +47,13 @@ public class SlideFragmentPagerAdapter extends DragDetailFragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "Tab"+position;
+        if(position==0){
+            return "商品详情";
+        }
+        else if(position==1){
+            return "产品参数";
+        }else if(position==2){
+            return "宝贝评价";
+        }else return"";
     }
 }

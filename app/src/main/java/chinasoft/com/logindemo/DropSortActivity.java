@@ -1,5 +1,6 @@
 package chinasoft.com.logindemo;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,7 @@ import java.util.List;
 import chinasoft.com.adapter.MenuListAdapter;
 
 @ContentView(R.layout.activity_drop_sort)
-public class DropSortActivity extends AppCompatActivity {
+public class DropSortActivity extends Activity {
     @ViewInject(R.id.text)
     private TextView text;
 

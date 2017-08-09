@@ -41,7 +41,7 @@
         <!-- 无圆角-->
         <LinearLayout style="@style/mid_layout">
             <TextView style="@style/usertext"
-                android:text="地区设置"
+                android:text="管理收货地址"
                 android:onClick="go"
                 android:id="@+id/location"/>
             <ImageView style="@style/img_arrow"/>

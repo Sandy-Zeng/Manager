@@ -19,7 +19,7 @@
         android:id="@+id/drag_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="90"
+        android:layout_weight="92"
         android:background="@color/white"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="8dp"
@@ -263,7 +263,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10">
+        android:layout_weight="8">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -271,11 +271,15 @@
             android:layout_weight="1"
             android:gravity="center">
             <ImageView
+                android:id="@+id/contect"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:onClick="contect"
                 android:src="@drawable/kefu"
                 android:layout_weight="4"/>
             <TextView
+                android:onClick="contect"
+                android:id="@+id/kefu"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
@@ -309,13 +313,13 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:src="@drawable/cart1"/>
+            android:src="@drawable/cart2"/>
         <Button
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="match_parent"
             android:text="添加到购物车"
-            android:background="@color/colorFont"
+            android:background="@color/main_color"
             />
 
     </LinearLayout>

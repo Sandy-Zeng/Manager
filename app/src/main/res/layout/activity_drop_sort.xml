@@ -1,35 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="chinasoft.com.logindemo.DropSortActivity">
-
+    tools:context="chinasoft.com.logindemo.DropSortActivity"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="10"
+        android:background="#FF8C94"
+        android:gravity="center" >
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:hint="Search here..."
+            android:textColorHint="#FF8C94"
+            android:background="@drawable/searchedit"
+            android:padding="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:drawableLeft="@drawable/search"
+            />
+
+        <!--<Button
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="这里是筛选的结果布局"/>
+            android:layout_weight="1"
+            android:hint="搜索" />-->
+
     </LinearLayout>
-
-    <chinasoft.com.logindemo.DropDownMenu xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/dropDownMenu"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:dividerColor="@color/blue_app"
-        app:maskColor="@color/mask_color"
-        app:menuBackgroundColor="@color/main_color"
-        app:menuSelectedIcon="@drawable/ic_img_up"
-        app:menuTextSize="16sp"
-        app:menuUnselectedIcon="@drawable/ic_img_down"
-        app:textSelectedColor="@color/blue_app"
-        app:textUnselectedColor="@color/drop_down_unselected"
-        app:underlineColor="@color/blue" />
+        android:layout_height="0dp"
+        android:layout_weight="90">
 
-</RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="这里是筛选的结果布局"/>
+        </LinearLayout>
+
+        <chinasoft.com.logindemo.DropDownMenu xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/dropDownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:dividerColor="@color/blue_app"
+            app:maskColor="@color/mask_color"
+            app:menuBackgroundColor="@color/colorNormal"
+            app:menuSelectedIcon="@drawable/ic_img_up"
+            app:menuTextSize="16sp"
+            app:menuUnselectedIcon="@drawable/ic_img_down"
+            app:textSelectedColor="@color/blue_app"
+            app:textUnselectedColor="@color/drop_down_unselected"
+            app:underlineColor="@color/blue" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
