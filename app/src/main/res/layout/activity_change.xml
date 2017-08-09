@@ -3,20 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@drawable/changebg">
+    <Button
+        android:layout_marginTop="80dp"
+        android:id="@+id/userlogin"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/changeloginuser"
+        android:onClick="change"
+        android:text="用户登录"/>
     <Button
         android:id="@+id/adminlogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:text="管理员登录"
+        android:onClick="change"
         android:background="@drawable/changelogin"/>
        <!-- android:background="@drawable/changelogin"-->
-    <Button
-        android:id="@+id/userlogin"
-        android:layout_marginTop="70dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/changeloginuser"
-        android:text="用户登录"/>
+
 </LinearLayout>
 

@@ -86,11 +86,11 @@ public class AdminMain extends AppCompatActivity {
                         transaction.replace(R.id.adminframepage,contentFragment);
                         break;
                     case 3:
-                        contentFragment = new OrderFragment();
+                        contentFragment = new StorageFragment();
                         transaction.replace(R.id.adminframepage,contentFragment);
                         break;
                     case 4:
-                        contentFragment = new StorageFragment();
+                        contentFragment = new OrderFragment();
                         transaction.replace(R.id.adminframepage,contentFragment);
                         break;
                     case 5:

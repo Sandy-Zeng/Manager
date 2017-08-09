@@ -78,7 +78,7 @@ public class LoadingActivity extends Activity {
     }
 
     public void buttonskip(View view){
-        Intent intent=new Intent(LoadingActivity.this,login.class);
+        Intent intent=new Intent(LoadingActivity.this,ChangeActivity.class);
         startActivity(intent);
     }
 

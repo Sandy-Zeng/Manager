@@ -61,7 +61,17 @@ public class StorageFragment extends Fragment {
         }
 
         @Override
-        public Fragment getItem(int position) {
+        public Fragment getItem(int position)        {
+            switch (position){
+                case 0:
+                    return ware0Fragment.newInstance(position);
+                case 1:
+                    return ware1Fragment.newInstance(position);
+                case 2:
+                    return ware2Fragment.newInstance(position);
+                case 3:
+                    return ware3Fragment.newInstance(position);
+            };
             return NewsFragment.newInstance(position);
         }
 
