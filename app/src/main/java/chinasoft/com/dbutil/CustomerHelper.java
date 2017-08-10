@@ -17,6 +17,7 @@ public class CustomerHelper {
     private SQLiteDatabase db;
 
     public  CustomerHelper(){
+
         db = Connector.getWritableDatabase();
     }
 

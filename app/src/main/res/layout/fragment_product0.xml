@@ -8,12 +8,12 @@
         android:layout_height="100dp"
         android:orientation="horizontal">
         <ImageView
-            android:id="@+id/goodsimg"
+            android:id="@+id/goodsimgp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/p1"/>
         <LinearLayout
-            android:layout_width="200dp"
+            android:layout_width="170dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
             <LinearLayout
@@ -80,19 +80,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="30dp">
-                <ImageView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/mymoney"/>
+                android:layout_marginTop="5dp">
+               <TextView
+                   android:layout_width="50dp"
+                   android:layout_height="wrap_content"
+                   android:textColor="#474747"
+                   android:textSize="15sp"
+                   android:text="卖价"/>
                 <TextView
                     android:id="@+id/goodsprice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
                     android:textSize="15sp"
                     android:textColor="#474747"
                     android:text="60"/>
@@ -102,21 +102,42 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_marginTop="8dp"
-                    android:layout_width="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
                     android:textSize="15sp"
                     android:textColor="#474747"
-                    android:text="x"/>
+                    android:text="成本价"/>
                 <TextView
+                    android:id="@+id/primeprice"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="15sp"
+                    android:textColor="#474747"
+                    android:text="1"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#474747"
+                    android:text="官网价"/>
+                <TextView
+                    android:id="@+id/webprice"
                     android:layout_marginTop="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:textSize="12sp"
+                    android:textSize="15sp"
                     android:textColor="#474747"
-                    android:text="1"/>
+                    android:text="60"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

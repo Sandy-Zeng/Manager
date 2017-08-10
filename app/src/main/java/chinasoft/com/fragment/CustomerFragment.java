@@ -28,7 +28,7 @@ public class CustomerFragment extends android.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         final View v=inflater.inflate(R.layout.customer_fragment,container,false);
 
-        tabs = (CategoryTabStrip)v.findViewById(R.id.category_strip);
+        tabs = (CategoryTabStrip)v.findViewById(R.id.category_stripc);
         pager = (ViewPager)v.findViewById(R.id.view_pager);
         adapter = new MyPagerAdapter(getFragmentManager());
 

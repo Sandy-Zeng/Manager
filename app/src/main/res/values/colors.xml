@@ -30,6 +30,8 @@
     <color name="pink_fc4f74">#fc4f74</color>
     <color name="mybg"><!--#eb175d-->#FF80AB</color>
 
+    <color name="black_overlay">#66000000</color>
+
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="red">#ec0f38</color>
