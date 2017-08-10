@@ -31,7 +31,7 @@ public class CustomerSelectorAdapter extends BaseAdapter implements Indexer {
         // 列表特征和分组首项进行关联
         for (int i = 0; i < mCustomer.size(); i++) {
             Customer customer = mCustomer.get(i);
-            String index = customer.getIndex();
+            String index = customer.getIndex1();
             if(index == null || "".equals(index)) continue;
             String section = index.toUpperCase().substring(0, 1);
             if(!indexMap.containsKey(section)){
@@ -64,12 +64,12 @@ public class CustomerSelectorAdapter extends BaseAdapter implements Indexer {
 
 
 
-        String index = customer.getIndex();
+        String index = customer.getIndex1();
         char idFirstChar = index.toUpperCase().charAt(0);
         if (position == 0) {
             setIndex(holder.tvSection, String.valueOf(idFirstChar));
         } else {
-            String preLabel = mCustomer.get(position - 1).getIndex();
+            String preLabel = mCustomer.get(position - 1).getIndex1();
             char preFirstChar = preLabel.toUpperCase().charAt(0);
             if (idFirstChar != preFirstChar) { // diff group
                 setIndex(holder.tvSection, String.valueOf(idFirstChar));

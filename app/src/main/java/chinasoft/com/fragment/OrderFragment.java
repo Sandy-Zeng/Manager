@@ -20,7 +20,7 @@ import chinasoft.com.util.MyFragmentPageAdapter;
  * Created by Ｓａｎｄｙ on 2017/8/5.
  */
 
-public class OrderFragment extends Fragment {
+public class OrderFragment extends Fragment{
     private CategoryTabStrip tabs;//导航菜单项
     private ViewPager pager;//导航页
     private MyPagerAdapter adapter;
@@ -28,7 +28,7 @@ public class OrderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         final View v=inflater.inflate(R.layout.order_fragment,container,false);
 
-        tabs = (CategoryTabStrip)v.findViewById(R.id.category_strip);
+        tabs = (CategoryTabStrip)v.findViewById(R.id.category_stripo);
         pager = (ViewPager)v.findViewById(R.id.view_pager);
         adapter = new MyPagerAdapter(getFragmentManager());
 

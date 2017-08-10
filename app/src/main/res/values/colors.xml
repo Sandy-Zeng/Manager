@@ -29,4 +29,6 @@
     <color name="colorBlack33">#333333</color>
     <color name="pink_fc4f74">#fc4f74</color>
     <color name="mybg"><!--#eb175d-->#FF80AB</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

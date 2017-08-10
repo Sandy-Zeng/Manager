@@ -23,10 +23,10 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".ShouyeDemo"
-            android:windowSoftInputMode="stateHidden"></activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".AdminMain"
-            android:theme="@style/NotitleTheme">
+            android:theme="@style/NotitleTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,15 +35,12 @@
         </activity>
         <activity
             android:name=".LoadingActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-
-        </activity>
-        <activity android:name=".ChangeActivity">
-        </activity>
-        <activity android:name=".SearchActivity"
-            android:theme="@style/NotitleTheme">
-
-        </activity>
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity android:name=".ChangeActivity" />
+        <activity
+            android:name=".SearchActivity"
+            android:theme="@style/NotitleTheme" />
+        <activity android:name=".CustomerinfoActivity"></activity>
     </application>
 
 </manifest>

@@ -28,4 +28,8 @@
     <string name="category_addstorage">入库</string>
     <string name="category_minusstorage">出库</string>
     <string name="category_recordlist">出入库记录</string>
+
+    <string name="title_activity_test">TestActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

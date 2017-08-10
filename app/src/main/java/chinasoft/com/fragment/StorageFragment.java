@@ -27,7 +27,7 @@ public class StorageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         final View v=inflater.inflate(R.layout.storage_fragment,container,false);
 
-        tabs = (CategoryTabStrip)v.findViewById(R.id.category_strip);
+        tabs = (CategoryTabStrip)v.findViewById(R.id.category_strips);
         pager = (ViewPager)v.findViewById(R.id.view_pager);
         adapter = new MyPagerAdapter(getFragmentManager());
 
