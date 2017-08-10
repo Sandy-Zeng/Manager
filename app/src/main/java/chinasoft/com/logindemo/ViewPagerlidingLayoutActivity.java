@@ -1,21 +1,25 @@
 package chinasoft.com.logindemo;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-
-import android.support.design.widget.TabLayout;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.alibaba.fastjson.JSON;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import chinasoft.com.adapter.SlideFragmentPagerAdapter;
+import chinasoft.com.dbutil.HistoryHelper;
 import chinasoft.com.service.BackGroundService;
 import chinasoft.com.view.DragScrollDetailsLayout;
 
@@ -28,6 +32,20 @@ public class ViewPagerlidingLayoutActivity extends AppCompatActivity {
     private DragScrollDetailsLayout mDragScrollDetailsLayout;
     @ViewInject(R.id.flag_tips)
     private TextView mTextView;
+    @ViewInject(R.id.pname)
+    private TextView pname;
+    @ViewInject(R.id.price)
+    private TextView price;
+    @ViewInject(R.id.sellAmount)
+    private TextView sellAmount;
+    @ViewInject(R.id.address)
+    private TextView address;
+    @ViewInject(R.id.product_image)
+    private ImageView pimage;
+    @ViewInject(R.id.back)
+    private ImageView back;
+    private int[] image = {R.drawable.p1, R.drawable.p2, R.drawable.p3, R.drawable.p4, R.drawable.p5, R.drawable.p6,
+            R.drawable.p7, R.drawable.p8, R.drawable.p9, R.drawable.p10};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +54,34 @@ public class ViewPagerlidingLayoutActivity extends AppCompatActivity {
         x.view().inject(this);
         Intent intent = new Intent(ViewPagerlidingLayoutActivity.this, BackGroundService.class);
         startService(intent);
+
+        Intent in = getIntent();
+        String json = in.getStringExtra("json");
+        com.alibaba.fastjson.JSONObject object = (com.alibaba.fastjson.JSONObject) JSON.parse(json);
+        Integer pid = (Integer) object.get("productId");
+        pname.setText((String) object.get("productName"));
+        price.setText((String) object.get("price"));
+        sellAmount.setText(Integer.toString((Integer) object.get("sellAmount")));
+        address.setText((String) object.get("sendAddr"));
+        pimage.setImageResource(image[pid - 1]);
+
+        //返回上一页
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        //将浏览历史存入数据库
+        HistoryHelper historyHelper = new HistoryHelper();
+        SharedPreferences sp = ViewPagerlidingLayoutActivity.this.getSharedPreferences("user", MODE_PRIVATE);
+        String username = sp.getString("username", "");
+        if (!historyHelper.hasHistory(pid, username)) {
+            historyHelper.add(pid, username);
+        }
+        historyHelper.close();
+
 
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);

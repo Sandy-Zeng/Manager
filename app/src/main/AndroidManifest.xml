@@ -33,29 +33,49 @@
         <activity android:name=".Register" />
         <activity
             android:name=".Loding"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".ShouyeDemo"
-            android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".IndexActivity" />
-        <activity android:name=".AdminLogin" />
-        <activity android:name=".AdminRegister" />
-        <activity android:name=".ViewPagerlidingLayoutActivity"></activity>
-        <activity android:name=".ConfigActivity" />
-        <activity android:name=".UserUpdateActivity" />
-        <activity android:name=".LocationActivity" />
-        <activity android:name=".UniverseActivity" />
-        <activity android:name=".PrivacyActivity" />
-        <activity android:name=".AboutUsActivity" />
-        <activity android:name=".DropSortActivity">
-
+            android:windowSoftInputMode="stateHidden">
         </activity>
-        <activity android:name=".ContectActivity"></activity>
+        <activity
+            android:name=".IndexActivity"
+            android:theme="@style/NotitleTheme"></activity>
+        <activity
+            android:name=".AdminLogin"
+            android:theme="@style/NotitleTheme" />
+        <activity
+            android:name=".AdminRegister"
+            android:theme="@style/NotitleTheme" />
+        <activity
+            android:name=".ViewPagerlidingLayoutActivity"
+            android:theme="@style/NotitleTheme">
+        </activity>
+        <activity
+            android:name=".ConfigActivity"
+            android:theme="@style/NotitleTheme" />
+        <activity
+            android:name=".UserUpdateActivity"
+            android:theme="@style/NotitleTheme" />
+        <activity
+            android:name=".LocationActivity"
+            android:theme="@style/NotitleTheme" />
+        <activity
+            android:name=".UniverseActivity"
+            android:theme="@style/NotitleTheme" />
+        <activity
+            android:name=".PrivacyActivity"
+            android:theme="@style/NotitleTheme" />
+        <activity
+            android:name=".AboutUsActivity"
+            android:theme="@style/NotitleTheme" />
+        <activity
+            android:name=".DropSortActivity"
+            android:theme="@style/NotitleTheme"></activity>
+        <activity android:name=".ContectActivity" />
         <activity
             android:name=".AdminMain"
-            android:theme="@style/NotitleTheme">
-
-        </activity>
+            android:theme="@style/NotitleTheme"></activity>
         <activity
             android:name=".LoadingActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
@@ -65,11 +85,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChangeActivity"></activity>
+        <activity
+            android:name=".ChangeActivity"
+            android:theme="@style/NotitleTheme" />
         <activity
             android:name=".SearchActivity"
-            android:theme="@style/NotitleTheme"></activity>
-        <activity android:name=".WebActivity"
+            android:theme="@style/NotitleTheme" />
+        <activity
+            android:name=".WebActivity"
+            android:theme="@style/NotitleTheme" />
+        <activity
+            android:name=".HistoryActivity"
             android:theme="@style/NotitleTheme"></activity>
     </application>
 

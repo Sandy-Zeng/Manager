@@ -7,6 +7,30 @@
     tools:context="chinasoft.com.logindemo.ViewPagerlidingLayoutActivity"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#FF80AB">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品详情"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="130dp" />
+    </LinearLayout>
+
     <Button
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -36,6 +60,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/product_image"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:src="@drawable/p1" />
@@ -48,7 +73,8 @@
                     <LinearLayout
 
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
 
                         <TextView
                             android:id="@+id/pname"
@@ -56,7 +82,8 @@
                             android:layout_height="60dp"
                             android:layout_marginLeft="15dp"
                             android:text="神奇的魔法水帮助你成为美美的小仙女 "
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:textColor="#000000" />
 
                         <LinearLayout
                             android:layout_width="60dp"
@@ -66,14 +93,15 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:src="@drawable/pocket" />
 
                             <TextView
                                 android:layout_width="60dp"
                                 android:layout_height="20dp"
-                                android:text="分享有赏" />
+                                android:text="分享有赏"
+                                android:textColor="@color/colorFont" />
 
                         </LinearLayout>
 
@@ -82,20 +110,55 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
                         <TextView
-                            android:layout_width="100dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
-                            android:text="销量："
-                            android:textSize="15sp" />
+                            android:text="价格："
+                            android:textSize="15sp"
+                            android:textColor="@color/secFont" />
 
                         <TextView
-                            android:layout_width="100dp"
+                            android:id="@+id/price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="15sp"
+                            android:textColor="@color/secFont" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:text="销量："
+                            android:textSize="15sp"
+                            android:textColor="@color/secFont" />
+
+                        <TextView
+                            android:id="@+id/sellAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="15sp"
+                            android:textColor="@color/secFont" />
+
+                        <TextView
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="发货地址："
-                            android:textSize="15sp" />
+                            android:textSize="15sp"
+                            android:layout_marginLeft="8dp"
+                            android:textColor="@color/secFont" />
+
+                        <TextView
+                            android:id="@+id/address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="@color/secFont"
+                            android:layout_marginLeft="5dp" />
 
 
                     </LinearLayout>
@@ -123,7 +186,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="3"
                                 android:text="过敏无忧"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:textColor="@color/colorFont" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -143,7 +207,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="3"
                                 android:text="正品保证"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:textColor="@color/colorFont" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -163,7 +228,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="3"
                                 android:text="极速直达"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:textColor="@color/colorFont" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -185,7 +251,8 @@
                     <TextView
                         style="@style/usertext"
                         android:layout_marginLeft="10dp"
-                        android:text="限时抢购进行中,手慢无！" />
+                        android:text="限时抢购进行中,手慢无！"
+                        android:textColor="@color/colorFont" />
                 </LinearLayout>
 
                 <View style="@style/bg_line" />
@@ -202,24 +269,13 @@
                     <TextView
                         style="@style/usertext"
                         android:layout_marginLeft="10dp"
-                        android:text="购买可获得积分" />
+                        android:text="购买可获得积分"
+                        android:textColor="@color/colorFont" />
                 </LinearLayout>
 
                 <View
                     style="@style/bg_line"
                     android:layout_marginTop="10dp" />
-
-                <LinearLayout
-                    style="@style/mid_layout"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:id="@+id/select"
-                        style="@style/usertext"
-                        android:text="选择净含量" />
-
-                    <ImageView style="@style/img_arrow" />
-                </LinearLayout>
 
                 <View
                     style="@style/bg_line"
@@ -231,7 +287,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@color/hint_text"
-                    android:text="下拉查看商品详情" />
+                    android:text="下拉查看商品详情"
+                    android:textColor="@color/colorFont" />
             </LinearLayout>
         </ScrollView>
 
@@ -263,7 +320,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8">
+        android:layout_weight="8"
+        android:background="@color/appColor">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -285,7 +343,8 @@
                 android:layout_weight="2"
                 android:text="咨询客服"
                 android:layout_marginLeft="6dp"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorFont" />
 
         </LinearLayout>
         <LinearLayout
@@ -298,14 +357,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:src="@drawable/my"
-                android:layout_weight="4"/>
+                android:layout_weight="3" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 android:text="添加到收藏"
                 android:layout_marginLeft="6dp"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorFont" />
 
         </LinearLayout>
 
@@ -320,6 +380,7 @@
             android:layout_height="match_parent"
             android:text="添加到购物车"
             android:background="@color/main_color"
+            android:textColor="@color/colorFont"
             />
 
     </LinearLayout>

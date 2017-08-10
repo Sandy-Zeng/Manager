@@ -3,6 +3,7 @@ package chinasoft.com.logindemo;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -20,6 +21,8 @@ public class MyFragment extends Fragment {
     private Fragment contentFragmemt;
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
+    private ImageView history;
+    private ImageView setting;
 
 
     @Nullable
@@ -35,6 +38,27 @@ public class MyFragment extends Fragment {
         Fragment init=new My_Collection_Fragment();
         transaction.replace(R.id.fragmentPageMy,init,"fragment");//
         transaction.commit();
+
+        //足迹
+        history = (ImageView) v.findViewById(R.id.searchHistory);
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), HistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //设置
+        setting = (ImageView) v.findViewById(R.id.gosetting);
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ConfigActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         return v ;
     }

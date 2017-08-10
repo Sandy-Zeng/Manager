@@ -60,5 +60,15 @@ public class HistoryHelper {
         db.close();
     }
 
+    public boolean hasHistory(Integer pid, String username) {
+        CustomerHelper customerHelper = new CustomerHelper();
+        Customer customer = customerHelper.find(username);
+        List<History> histories = DataSupport.where("pid = ? and customer_id = ?", Integer.toString(pid), Integer.toString(customer.getId())).find(History
+                .class);
+        if (histories.size() == 0)
+            return false;
+        return true;
+    }
+
 
 }

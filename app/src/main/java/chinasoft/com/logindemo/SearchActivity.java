@@ -25,7 +25,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -85,6 +84,7 @@ public class SearchActivity extends AppCompatActivity {
      */
     private Rect mRect;
 
+    @ViewInject(R.id.gosearch)
     private EditText searchEdit;
 
     @ViewInject(R.id.cancle)
@@ -132,13 +132,12 @@ public class SearchActivity extends AppCompatActivity {
                     // 隐藏键盘，这里getCurrentFocus()需要传入Activity对象，如果实际不需要的话就不用隐藏键盘了，免得传入Activity对象，这里就先不实现了
 //                    ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
 //                            getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                    Request request =new Request.Builder().url("http://192.168.40.14:8080/dgManager/Product_findAllProduct")
+                    String str = searchEdit.getText().toString();
+                    Request request = new Request.Builder().url("http://192.168.40.14:8080/dgManager/Product_frontSearch_android?json=" + str)
                             .get()
                             .build();
                     //Request request=builder.url("http://192.168.40.14:8080/dgManager/userlogin").post(formBody).build();
                     exec(request);
-
-
 
                     // 按完搜索键后将当前查询的关键字保存起来,如果该关键字已经存在就不执行保存
                     RecordSQLiteOpenHelper recordSQLiteOpenHelper=new RecordSQLiteOpenHelper();
@@ -148,8 +147,7 @@ public class SearchActivity extends AppCompatActivity {
                         recordSQLiteOpenHelper.insert(searchEdit.getText().toString().trim(),sp.getString("username",""));
                     }
                     recordSQLiteOpenHelper.closeDB();
-                    //根据输入的内容模糊查询商品，并跳转到另一个界面，这个需要根据需求实现
-                    Toast.makeText(SearchActivity.this, "点击搜索", Toast.LENGTH_SHORT).show();
+
 
                 }
                 return false;
@@ -174,6 +172,7 @@ public class SearchActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 Log.i("info","链接成功");
                 String s=response.body().string();
+                Log.i("info", s);
                 Message message =new Message();
                 message.what=1;
                 message.obj =s;
@@ -187,11 +186,9 @@ public class SearchActivity extends AppCompatActivity {
             super.handleMessage(msg);
             if(msg.what==1){
                 String result=(String) msg.obj;
-                //String result="ok";
-                Log.i("info",result);
-                if(result.equals("ok")) {
-
-                }
+                Intent intent = new Intent(SearchActivity.this, DropSortActivity.class);
+                intent.putExtra("json", result);
+                startActivity(intent);
             }
         }
 
@@ -216,7 +213,7 @@ public class SearchActivity extends AppCompatActivity {
             LinearLayout layout=new LinearLayout(SearchActivity.this);
             layout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             TextView view = (TextView) inflater.inflate(R.layout.flowlayout_item,null);
-            LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 80);
             params.setMargins(10,10,10,10);
             view.setLayoutParams(params);
             view.setText(data.get(i));

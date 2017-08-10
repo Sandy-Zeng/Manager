@@ -28,6 +28,7 @@ public class My_Collection_Fragment extends Fragment {
     private String[]money={"70","80","70","70","80","80","70",
             "90","100","110"};
     private List<Integer> pid = new ArrayList<>();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,6 +61,8 @@ public class My_Collection_Fragment extends Fragment {
             map.put("money",money[i]);
             lists.add(map);
         }
+
+
         return v;
     }
 

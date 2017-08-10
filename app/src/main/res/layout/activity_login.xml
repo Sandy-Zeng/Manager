@@ -7,13 +7,14 @@
     android:orientation="vertical"
     tools:context="chinasoft.com.logindemo.login"
     android:background="@drawable/bg1">
-
     <ImageView
+        android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp"
-        />
+        android:src="@drawable/back1"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp" />
+
 
     <EditText
         android:id="@+id/username"

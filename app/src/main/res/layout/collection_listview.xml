@@ -52,22 +52,22 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageButton
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
                 android:id="@+id/addcart"
                 android:layout_marginTop="5dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/listviewbutton"
-                android:src="@drawable/collection_cart_empty"/>
-            <ImageButton
-                android:id="@+id/cancelcollection"
-                android:layout_marginTop="5dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/listviewbutton"
-                android:src="@drawable/like_press"
-                />
+                android:src="@drawable/collection_cart_empty" />
+            <!--  <ImageView
+                  android:id="@+id/cancelcollection"
+                  android:layout_marginTop="5dp"
+                  android:layout_width="30dp"
+                  android:layout_height="30dp"
+                  android:src="@drawable/like_press"
+                  />-->
         </LinearLayout>
     </LinearLayout>
 

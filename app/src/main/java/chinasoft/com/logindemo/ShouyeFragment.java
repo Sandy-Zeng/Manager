@@ -2,12 +2,16 @@ package chinasoft.com.logindemo;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -15,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +28,11 @@ import java.util.Map;
 import chinasoft.com.chinasoft.com.adapter.MySimpleAdapter;
 import chinasoft.com.dbutil.LikeHelper;
 import chinasoft.com.util.CycleViewPager;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by Ｓａｎｄｙ on 2017/8/2.
@@ -92,6 +102,17 @@ public class ShouyeFragment extends Fragment{
         }
 
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Request request = new Request.Builder().url("http://192.168.40.14:8080/dgManager/Product_view?json=" + pid.get(position))
+                        .get()
+                        .build();
+                exec(request);
+            }
+        });
+
+
         //gridView的列表适配器
         class MyAdapter extends BaseAdapter {
             private Context mcontext;
@@ -135,6 +156,42 @@ public class ShouyeFragment extends Fragment{
 
         return v;
     }
+
+
+    private void exec(Request request) {
+        OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.i("info", "链接失败");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.i("info", "链接成功");
+                String s = response.body().string();
+                Message message = new Message();
+                message.what = 1;
+                message.obj = s;
+                handler.sendMessage(message);
+            }
+        });
+    }
+
+    Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == 1) {
+                String result = (String) msg.obj;
+                //String result="ok";
+                Log.i("info", result);
+                Intent intent = new Intent(getActivity(), ViewPagerlidingLayoutActivity.class);
+                intent.putExtra("json", result);
+                startActivity(intent);
+            }
+        }
+
+    };
     private void initData() {
         mList[0]=R.drawable.lunbo1;
         mList[1]=R.drawable.lunbo2;

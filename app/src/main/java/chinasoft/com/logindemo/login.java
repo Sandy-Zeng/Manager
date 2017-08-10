@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -32,6 +33,7 @@ public class login extends Activity {
     private EditText password;
     private CheckBox remember;
     private SharedPreferences sp;
+    private ImageView back;
 
     Handler handler=new Handler(){
         public void handleMessage(Message msg){
@@ -98,6 +100,16 @@ public class login extends Activity {
                 //Intent
                 Intent  int1 = new Intent(login.this, Register.class);
                 startActivityForResult(int1, 1);
+            }
+        });
+
+        back = (ImageView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(login.this, ChangeActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

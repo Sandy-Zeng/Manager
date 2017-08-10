@@ -1,10 +1,8 @@
 package chinasoft.com.logindemo;
 
+import android.app.Dialog;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,47 +15,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONException;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-
-import org.apache.http.HttpResponse;
-import org.json.JSONObject;
-
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import chinasoft.com.chinasoft.com.adapter.MySimpleAdapter;
 import chinasoft.com.util.GetDataTask;
-import chinasoft.com.util.MyApplication;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
-import static chinasoft.com.logindemo.R.id.data;
 
 /**
  * Created by Ｓａｎｄｙ on 2017/8/2.
@@ -70,6 +51,7 @@ public class BlogFragment extends Fragment {
     private  LinkedList<String>  date=new LinkedList<String>();
     private  LinkedList<String>  url=new LinkedList<String>();
     private  LinkedList<String>  author=new LinkedList<String>();
+    private Dialog dialog;
 
 
 
@@ -93,7 +75,7 @@ public class BlogFragment extends Fragment {
                 com.alibaba.fastjson.JSONObject object = (com.alibaba.fastjson.JSONObject) JSON.parse(result);
                     com.alibaba.fastjson.JSONObject resultdata = (com.alibaba.fastjson.JSONObject)object.get("result");
                     JSONArray array =(JSONArray)resultdata.get("data");
-                    for(int i=0;i<10;i++)
+                for (int i = 0; i < 5; i++)
                     {
                         com.alibaba.fastjson.JSONObject o = (com.alibaba.fastjson.JSONObject)array.getJSONObject(i);
                         Log.i("info",o.getString("title"));
@@ -162,6 +144,7 @@ public class BlogFragment extends Fragment {
                 case 1:
                     //mAdapter.notifyDataSetChanged();
                     actualListView.setAdapter(mAdapter);
+                    dialog.dismiss();
                     break;
                 default:
                     break;
@@ -320,6 +303,11 @@ public class BlogFragment extends Fragment {
                 .get()
                 .build();
         exec(request);
+        dialog = new Dialog(view.getContext());
+        View viewKilling = View.inflate(view.getContext(), R.layout.loading_dialog, null);
+        dialog.setCancelable(false);
+        dialog.setContentView(viewKilling);
+        dialog.show();
 
         actualListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -329,6 +317,7 @@ public class BlogFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
 
     }
 

@@ -5,13 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="chinasoft.com.logindemo.AboutUsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/White">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#FF80AB">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关于"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="135dp" />
+    </LinearLayout>
 
     <LinearLayout style="@style/wrap_layout"
         android:gravity="center">
         <LinearLayout style="@style/single_layout">
             <TextView style="@style/usertext"
-                android:text="关于我们"/>
+                android:text="关于我们"
+                android:textColor="@color/black" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -29,14 +55,16 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="15dp"
                 android:text="Teleohone:"
-                android:textSize="25sp"/>
+                android:textSize="25sp"
+                android:textColor="@color/black" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="10dp"
                 android:text="小仙女不用电话"
-                android:textSize="15sp"/>
+                android:textSize="15sp"
+                android:textColor="@color/black" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,7 +78,8 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="10dp"
                 android:text="小仙女吧也不用邮箱"
-                android:textSize="15sp"/>
+                android:textSize="15sp"
+                android:textColor="@color/black" />
 
 
         </LinearLayout>
@@ -63,7 +92,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Where to find us"
-                android:textSize="25sp"/>
+                android:textSize="25sp"
+                android:textColor="@color/black" />
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -79,7 +109,8 @@
         android:gravity="center">
         <LinearLayout style="@style/single_layout">
             <TextView style="@style/usertext"
-                android:text="开发人员"/>
+                android:text="开发人员"
+                android:textColor="@color/black" />
         </LinearLayout>
     </LinearLayout>
 
@@ -101,7 +132,8 @@
                   android:layout_height="wrap_content"
                   android:text="曾小金"
                   android:layout_gravity="center_horizontal"
-                  android:textSize="20sp"/>
+                  android:textSize="20sp"
+                  android:textColor="@color/black" />
               <ImageView
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
@@ -118,7 +150,8 @@
                     android:layout_height="wrap_content"
                     android:text="韩小柴"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:textColor="@color/black" />
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -143,7 +176,8 @@
                     android:layout_height="wrap_content"
                     android:text="曾小熊"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:textColor="@color/black" />
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -160,11 +194,12 @@
                     android:layout_height="wrap_content"
                     android:text="于小格"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:textColor="@color/black" />
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/yzy"/>
+                    android:src="@drawable/yzy" />
 
             </LinearLayout>
 
