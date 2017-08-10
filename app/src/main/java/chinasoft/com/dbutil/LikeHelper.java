@@ -19,11 +19,12 @@ public class LikeHelper {
     public LikeHelper(){
         db = Connector.getWritableDatabase();
     }
-    public void add(Integer pid,String username)
+
+    public void add(Integer pid, String username, String title, String place, String price)
     {
         CustomerHelper customerHelper = new CustomerHelper();
         Customer customer=customerHelper.find(username);
-        Like like = new Like(pid,customer);
+        Like like = new Like(pid, customer, price, title, place);
         like.save();
     }
     public void delete(Integer lid)

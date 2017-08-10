@@ -1,13 +1,12 @@
 package chinasoft.com.fragmentitem;
 
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -19,6 +18,7 @@ import chinasoft.com.logindemo.R;
 public class FragmentItem2 extends Fragment {
     private ListView list;
     private View rootView;
+    private int[] images;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class FragmentItem2 extends Fragment {
             list.setAdapter(new BaseAdapter() {
                 @Override
                 public int getCount() {
-                    return 3;//设置默认商品详情三张图片
+                    return 2;//设置默认商品详情三张图片
                    //return list.getCount();
                 }
 
@@ -46,12 +46,9 @@ public class FragmentItem2 extends Fragment {
 
                 @Override
                 public View getView(int i, View view, ViewGroup viewGroup) {
-                    Button button=new Button(getActivity());
-                    button.setText(""+i);
-                    return button;
-//                    ImageView imageView=new ImageView(getActivity());
-//                    //imageView.set
-//                    return null;
+                    ImageView imageView = new ImageView(getActivity());
+                    imageView.setImageResource(images[i]);
+                    return imageView;
                 }
             });
         }else {
@@ -72,4 +69,9 @@ public class FragmentItem2 extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
+
+    public void setImage(int image[]) {
+        images = image;
+    }
+
 }

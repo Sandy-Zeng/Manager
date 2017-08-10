@@ -61,13 +61,13 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/collection_cart_empty" />
-            <!--  <ImageView
+
+            <ImageView
                   android:id="@+id/cancelcollection"
                   android:layout_marginTop="5dp"
                   android:layout_width="30dp"
                   android:layout_height="30dp"
-                  android:src="@drawable/like_press"
-                  />-->
+                  android:src="@drawable/like_press" />
         </LinearLayout>
     </LinearLayout>
 

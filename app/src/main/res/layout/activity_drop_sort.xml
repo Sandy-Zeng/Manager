@@ -4,28 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="chinasoft.com.logindemo.DropSortActivity"
+    android:background="@color/White"
     android:orientation="vertical"
-    android:background="@color/White">
+    tools:context="chinasoft.com.logindemo.DropSortActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
         android:layout_weight="10"
         android:background="@color/appColor"
-        android:gravity="center" >
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <EditText
             android:layout_width="300dp"
             android:layout_height="30dp"
-            android:hint="Search here..."
-            android:textColorHint="@color/appColor"
-            android:background="@drawable/searchedit"
-            android:padding="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:background="@drawable/searchedit"
             android:drawableLeft="@drawable/search"
-            />
+            android:hint="Search here..."
+            android:padding="5dp"
+            android:textColorHint="@color/appColor" />
 
         <!--<Button
             android:layout_width="0dp"
@@ -34,6 +34,7 @@
             android:hint="搜索" />-->
 
     </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -45,29 +46,29 @@
             android:id="@+id/dropDownMenu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:dividerColor="@color/blue_app"
+            app:dividerColor="@color/appColor"
             app:maskColor="@color/mask_color"
-            app:menuBackgroundColor="@color/colorNormal"
+            app:menuBackgroundColor="@color/White"
             app:menuSelectedIcon="@drawable/ic_img_up"
             app:menuTextSize="16sp"
             app:menuUnselectedIcon="@drawable/ic_img_down"
-            app:textSelectedColor="@color/blue_app"
-            app:textUnselectedColor="@color/drop_down_unselected"
-            app:underlineColor="@color/blue" />
+            app:textSelectedColor="@color/appColor"
+            app:textUnselectedColor="@color/secFont"
+            app:underlineColor="@color/appColor" />
+
 
         <LinearLayout
-            android:layout_width="match_parent"
+                android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="60dp">
 
-            <chinasoft.com.util.MyListView
+            <ListView
                 android:id="@+id/plistView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
     </RelativeLayout>
-
 
 
 </LinearLayout>

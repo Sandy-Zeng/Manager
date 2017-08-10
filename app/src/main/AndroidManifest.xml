@@ -29,7 +29,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".login" />
+        <activity android:name=".login"></activity>
         <activity android:name=".Register" />
         <activity
             android:name=".Loding"
@@ -78,16 +78,16 @@
             android:theme="@style/NotitleTheme"></activity>
         <activity
             android:name=".LoadingActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+        <activity
+            android:name=".ChangeActivity"
+            android:theme="@style/NotitleTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ChangeActivity"
-            android:theme="@style/NotitleTheme" />
         <activity
             android:name=".SearchActivity"
             android:theme="@style/NotitleTheme" />

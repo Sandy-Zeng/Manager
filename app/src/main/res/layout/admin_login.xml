@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="chinasoft.com.logindemo.AdminLogin"
     android:orientation="vertical"
-    android:background="@color/White"
+    android:background="@drawable/adminbg1"
     >
 
     <ImageView

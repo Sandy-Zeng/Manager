@@ -22,7 +22,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -95,12 +99,14 @@ public class SearchActivity extends AppCompatActivity {
     private FlowLayout historyLayout;
     @ViewInject(R.id.fenleiLayout)
     private FlowLayout fenleiLayout;
-    @ViewInject(R.id.brandLayout)
-    private FlowLayout brandLayout;
+    @ViewInject(R.id.brandgrid)
+    private GridView grid;
     private List<String> historyRecord=new ArrayList<>();//搜索历史的数组
     private List<String> brand= new ArrayList<>();
     private List<String> type=new ArrayList<>();
+    private Integer[] brandImage = {R.drawable.b1, R.drawable.b2, R.drawable.b3, R.drawable.b4, R.drawable.b5, R.drawable.b6, R.drawable.b7, R.drawable.b8, R.drawable.b9};
     //private RecordSQLiteOpenHelper helper ;
+    private String[] brandName = {"sana", "mac", "城野医生", "canmake", "苏菲娜", "娥佩兰", "tom ford", "欣兰", "高姿"};
     private SQLiteDatabase db;
 
     @Override
@@ -120,7 +126,7 @@ public class SearchActivity extends AppCompatActivity {
         //为流式布局设置
         initLayout(historyLayout,historyRecord,0);
         initLayout(fenleiLayout,type,1);
-        initLayout(brandLayout,brand,2);
+
 
 
         searchEdit.setOnKeyListener(new View.OnKeyListener() {// 输入完后按键盘上的搜索键
@@ -154,6 +160,54 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+
+        //gridView的列表适配器
+        class MyAdapter extends BaseAdapter {
+            private Context mcontext;
+
+            MyAdapter(Context context) {
+                mcontext = context;
+            }
+
+            @Override
+            public int getCount() {
+                return brandImage.length;
+            }
+
+            @Override
+            public Object getItem(int position) {
+                return brandImage[position];
+            }
+
+            @Override
+            public long getItemId(int position) {
+                return position;
+            }
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                LayoutInflater inflater = LayoutInflater.from(mcontext);
+                View view = inflater.inflate(R.layout.brand_item, null);
+                ImageView v = (ImageView) view;
+                v.setImageResource(brandImage[position]);
+                return v;
+            }
+        }
+
+        MyAdapter myAdapter = new MyAdapter(SearchActivity.this);
+        grid.setAdapter(myAdapter);
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String str = brandName[position];
+                Request request = new Request.Builder().url("http://192.168.40.14:8080/dgManager/Product_findAllProductByBrand_android?brandName=" + str)
+                        .get()
+                        .build();
+                //Request request=builder.url("http://192.168.40.14:8080/dgManager/userlogin").post(formBody).build();
+                exec(request);
+            }
+        });
+
     }
 
     private void exec(Request request){
@@ -174,7 +228,7 @@ public class SearchActivity extends AppCompatActivity {
                 String s=response.body().string();
                 Log.i("info", s);
                 Message message =new Message();
-                message.what=1;
+                message.what = 1;
                 message.obj =s;
                 handler.sendMessage(message);
             }
@@ -200,10 +254,17 @@ public class SearchActivity extends AppCompatActivity {
         RecordSQLiteOpenHelper recordSQLiteOpenHelper = new RecordSQLiteOpenHelper();
         SharedPreferences sp = getSharedPreferences("user",MODE_PRIVATE);
         List<Record> record= recordSQLiteOpenHelper.findAll(sp.getString("username",""));
-        for(Record r : record){
-            historyRecord.add(r.getName());
+        if (record.size() > 10) {
+            for (int i = 0; i < 10; i++) {
+                historyRecord.add(record.get(i).getName());
+            }
+        } else {
+            for (Record r : record) {
+                historyRecord.add(r.getName());
+            }
         }
         type.add("面膜"); type.add("香水"); type.add("护肤套装"); type.add("彩妆"); type.add("洁面"); type.add("其他");
+
     }
 
     //初始化流式布局
@@ -225,6 +286,13 @@ public class SearchActivity extends AppCompatActivity {
                     view.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            TextView view = (TextView) v;
+                            String str = view.getText().toString();
+                            Request request = new Request.Builder().url("http://192.168.40.14:8080/dgManager/Product_frontSearch_android?json=" + str)
+                                    .get()
+                                    .build();
+                            //Request request=builder.url("http://192.168.40.14:8080/dgManager/userlogin").post(formBody).build();
+                            exec(request);
 
                         }
                     });
@@ -234,15 +302,12 @@ public class SearchActivity extends AppCompatActivity {
                     view.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
-                        }
-                    });
-                    break;
-                //按照品牌
-                case 2:
-                    view.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
+                            TextView view = (TextView) v;
+                            String str = view.getText().toString();
+                            Request request = new Request.Builder().url("http://192.168.40.14:8080/dgManager/Product_findAllProductByType?type=" + str)
+                                    .get()
+                                    .build();
+                            exec(request);
 
                         }
                     });

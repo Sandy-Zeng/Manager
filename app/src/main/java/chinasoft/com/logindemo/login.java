@@ -2,6 +2,7 @@ package chinasoft.com.logindemo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,15 +35,16 @@ public class login extends Activity {
     private CheckBox remember;
     private SharedPreferences sp;
     private ImageView back;
+    private Dialog dialog;
 
     Handler handler=new Handler(){
         public void handleMessage(Message msg){
             super.handleMessage(msg);
-            if(msg.what==1){
-                String result=(String) msg.obj;
+            String result = (String) msg.obj;
+            if (msg.what == 0) {
                 //String result="ok";
                 Log.i("info",result);
-                if(result.equals("ok")) {
+                if (result.equals("登录成功")) {
                     //将当前登录用户的用户名和密码保存
                     String user=username.getText().toString();
                     String pwd = password.getText().toString();
@@ -64,11 +66,28 @@ public class login extends Activity {
                     }
                     customerHelper.closeDB();
 
-                    //跳转到首页
-                    Intent intent = new Intent(login.this, ShouyeDemo.class);
-                    startActivity(intent);
-                    finish();
+                    Request request1 = new Request.Builder().url("http://192.168.40.14:8080/dgManager/Product_findAllProduct")
+                            .get()
+                            .build();
+                    exec(request1, 1);
+                    dialog = new AlertDialog.Builder(login.this).setTitle("登陆中，请稍后")
+                            .setView(LayoutInflater.from(login.this).inflate(R.layout.oauthing, null))
+                            .create();
+                    dialog.show();
+
+                } else {
+                    dialog = new AlertDialog.Builder(login.this).setTitle(result)
+                            .create();
+                    dialog.show();
                 }
+            }
+            if (msg.what == 1) {
+                //跳转到首页
+                Intent intent = new Intent(login.this, ShouyeDemo.class);
+                intent.putExtra("json", result);
+                startActivity(intent);
+                finish();
+                dialog.dismiss();
             }
         }
 
@@ -139,7 +158,7 @@ public class login extends Activity {
                 .get()
                 .build();
         //Request request=builder.url("http://192.168.40.14:8080/dgManager/userlogin").post(formBody).build();
-        exec(request);
+        exec(request, 0);
 
 
         /*Intent intent=new Intent(login.this,MainActivity.class);
@@ -148,7 +167,7 @@ public class login extends Activity {
         this.onPause();*/
     }
 
-    private void exec(Request request){
+    private void exec(Request request, final int tag) {
         OkHttpClient okHttpClient=new OkHttpClient();
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
@@ -165,7 +184,7 @@ public class login extends Activity {
                 Log.i("info","链接成功");
                 String s=response.body().string();
                 Message message =new Message();
-                message.what=1;
+                message.what = tag;
                 message.obj =s;
                 handler.sendMessage(message);
             }

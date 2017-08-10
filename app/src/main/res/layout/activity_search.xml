@@ -47,7 +47,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="10dp"
-        android:background="@color/White">
+        android:background="@color/White"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -109,8 +111,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:background="@color/White">
+        android:layout_marginTop="30dp"
+        android:background="@color/White"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -133,21 +137,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:background="@color/White">
+        android:layout_marginTop="30dp"
+        android:background="@color/White"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="品牌搜索"
             android:textColor="@color/secFont"
             android:textSize="20sp"
-            android:layout_marginLeft="10dp"/>
-        <chinasoft.com.util.FlowLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp" />
+
+        <GridView
+            android:id="@+id/brandgrid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/brandLayout">
+            android:numColumns="3"
+            android:verticalSpacing="10dp">
 
-        </chinasoft.com.util.FlowLayout>
+        </GridView>
 
 
     </LinearLayout>

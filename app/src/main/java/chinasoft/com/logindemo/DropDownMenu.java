@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -49,6 +50,8 @@ public class DropDownMenu extends LinearLayout {
     //tab未选中图标
     private int menuUnselectedIcon;
 
+    private ListView listView;
+
 
     public DropDownMenu(Context context) {
         super(context, null);
@@ -56,6 +59,10 @@ public class DropDownMenu extends LinearLayout {
 
     public DropDownMenu(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
+    }
+
+    public void setListView(ListView listView) {
+        this.listView = listView;
     }
 
     public DropDownMenu(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -226,8 +233,10 @@ public class DropDownMenu extends LinearLayout {
 
             if (view == tabMenuView.getChildAt(i)) {
                 if (current_tab_position == i) {
+                    listView.setVisibility(View.VISIBLE);
                     closeMenu();
                 } else {
+                    listView.setVisibility(View.GONE);
                     if (current_tab_position == -1) {
                         popupMenuViews.setVisibility(View.VISIBLE);
                         popupMenuViews.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.dd_menu_in));

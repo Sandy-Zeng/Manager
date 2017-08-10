@@ -56,7 +56,8 @@ public class RecordSQLiteOpenHelper  {
         //Log.i("info",Integer.toString(customer.getRecordList().size()));
         //Log.i("info",Integer.toString(customer.getId()));
         //int size= customer.getRecordList().size();
-        return customer.getRecordList();
+        List<Record> recordList = customer.getRecordList();
+        return recordList;
     }
 
 
