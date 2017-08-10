@@ -1,6 +1,8 @@
 package chinasoft.com.chinasoft.com.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,9 @@ import android.widget.TextView;
 
 import java.util.List;
 import java.util.Map;
+
+import chinasoft.com.dbutil.LikeHelper;
+import chinasoft.com.logindemo.R;
 
 /**
  * Created by Ｓａｎｄｙ on 2017/8/2.
@@ -25,19 +30,22 @@ public class MySimpleAdapter extends SimpleAdapter {
     private int mResource;
     private int mDropDownResource;
     private LayoutInflater mInflater;
+    private List<Integer> pid;
     public MySimpleAdapter(Context context,
                            List<? extends Map<String, ?>> data, int resource, String[] from,
-                           int[] to) {
+                           int[] to,List<Integer> pids) {
         super(context, data, resource, from, to);
         mData = data;
         mResource = mDropDownResource = resource;
         mFrom = from;
         mTo = to;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        pid = pids;
     }
-    public View getView(int position, View convertView, ViewGroup parent) {
+       public View getView(int position, final View convertView, ViewGroup parent) {
         return createViewFromResource(position, convertView, parent, mResource);
     }
+
     private View createViewFromResource(int position, View convertView,
                                         ViewGroup parent, int resource) {
         View v;
@@ -57,6 +65,29 @@ public class MySimpleAdapter extends SimpleAdapter {
             v = convertView;
         }
         bindView(position, v);
+        final ImageView like = (ImageView)v.findViewById(R.id.like);
+        final Integer k = position;
+        like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LikeHelper likeHelper = new LikeHelper();
+                Integer id = pid.get(k);
+                if(likeHelper.hasLike(id))
+                {
+                    like.setImageResource(R.drawable.like_normal);
+                    likeHelper.deleteByPid(id);
+                }else{
+                    like.setImageResource(R.drawable.like_press);
+                    SharedPreferences sp = v.getContext().getSharedPreferences("user", v.getContext().MODE_PRIVATE);
+                    //获取Editor对象
+                    String username = sp.getString("username", "");
+                    Log.i("info", username);
+                    Log.i("info", Integer.toString(pid.get(k)));
+                    likeHelper.add(pid.get(k), username);
+                }
+                likeHelper.close();
+            }
+        });
 
         return v;
     }

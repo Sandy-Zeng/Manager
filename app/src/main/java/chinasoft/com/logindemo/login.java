@@ -150,6 +150,7 @@ public class login extends Activity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                Log.i("info","链接成功");
                 String s=response.body().string();
                 Message message =new Message();
                 message.what=1;

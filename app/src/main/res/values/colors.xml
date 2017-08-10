@@ -6,7 +6,7 @@
 
     <color name="colorLogin">#ef7a82</color>
     <color name="colorNormal">#bfbfbf</color>
-    <color name="colorFont">#ffffff</color>
+    <color name="colorFont">#ff2121</color>
     <color name="colorFont1">#f06292</color>
     <color name="cycle_image_bg">#44222222</color>
     <color name="main_color">#FF8C94</color>
@@ -31,4 +31,38 @@
     <color name="mybg"><!--#eb175d-->#FF80AB</color>
 
     <color name="black_overlay">#66000000</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="red">#ec0f38</color>
+    <color name="gray">#7f7f7f</color>
+    <color name="orange">#ff7f66</color>
+
+    <color name="border_clo">#ccc</color>
+    <color name="text_clo">#333</color>
+    <color name="blue">#419DE4</color>
+
+    <color name="mask_color">#88888888</color>
+    <color name="blue_app">#22abea</color>
+    <color name="drop_down_unselected">#ffffff</color>
+
+    <color name="base_title_color">#464a4d</color>
+    <color name="material_text_color_47">#333333</color>
+    <color name="divider_color_c7">#d3d3d3</color>
+
+    <color name="app_bg">#eeeff3</color>
+    <color name="theme">@color/red</color>
+    <color name="theme_red">@color/red</color>
+    <color name="theme_white">@color/white</color>
+    <color name="gray_light">#EBEBEB</color>
+    <color name="gray_line">#dddddd</color>
+    <color name="hint_text">#B9BABB</color>
+    <color name="small_goods_price">#FF8C69</color>
+    <color name="title_black_color">#333333</color>
+    <color name="text_red">#ec0f38</color>
+    <color name="text_gray">#888888</color>
+    <color name="text_black">#222222</color>
+    <color name="price_red">#ff3346</color>
+    <color name="bg_gray">#f1f1f1</color>
+
 </resources>
