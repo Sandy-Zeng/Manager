@@ -32,7 +32,6 @@ import chinasoft.com.logindemo.R;
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View v=inflater.inflate(R.layout.fragment_order2,container,false);
            // TextView textView=(TextView) v.findViewById(R.id.order1);
-
             return v;
         }
 }

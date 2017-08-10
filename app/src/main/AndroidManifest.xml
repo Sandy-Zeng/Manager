@@ -21,10 +21,6 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
-
-
-
-
     <application
         android:name="chinasoft.com.util.MyApplication"
         android:allowBackup="true"
@@ -37,29 +33,25 @@
         <activity android:name=".Register" />
         <activity
             android:name=".Loding"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".ShouyeDemo"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".IndexActivity" />
         <activity android:name=".AdminLogin" />
         <activity android:name=".AdminRegister" />
-        <activity android:name=".ViewPagerlidingLayoutActivity"></activity>
+        <activity android:name=".ViewPagerlidingLayoutActivity" />
         <activity android:name=".ConfigActivity" />
         <activity android:name=".UserUpdateActivity" />
         <activity android:name=".LocationActivity" />
         <activity android:name=".UniverseActivity" />
         <activity android:name=".PrivacyActivity" />
         <activity android:name=".AboutUsActivity" />
-        <activity android:name=".DropSortActivity">
-
-        </activity>
-        <activity android:name=".ContectActivity"></activity>
+        <activity android:name=".DropSortActivity" />
+        <activity android:name=".ContectActivity" />
         <activity
             android:name=".AdminMain"
-            android:theme="@style/NotitleTheme">
-
-        </activity>
+            android:theme="@style/NotitleTheme" />
         <activity
             android:name=".LoadingActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
@@ -68,32 +60,35 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".ChangeActivity"></activity>
+        <activity android:name=".ChangeActivity" />
         <activity
             android:name=".SearchActivity"
-            android:theme="@style/NotitleTheme"></activity>
-        <activity android:name=".WebActivity"
-            android:theme="@style/NotitleTheme"></activity>
-
+            android:theme="@style/NotitleTheme" />
+        <activity
+            android:name=".WebActivity"
+            android:theme="@style/NotitleTheme" />
 
         <!-- 注册SDKActivity -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="tencent1106266965" /> <!-- 开放平台获取的APPID -->
             </intent-filter>
         </activity>
-        <activity android:name="com.tencent.connect.common.AssistActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".AllOrderActivity" />
+        <activity android:name=".OrderListActivity"></activity>
     </application>
-
 
 </manifest>

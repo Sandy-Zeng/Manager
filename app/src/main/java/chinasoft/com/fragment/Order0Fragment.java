@@ -14,7 +14,7 @@ import java.util.Map;
 
 import chinasoft.com.logindemo.R;
 
-public class Order0Fragment extends android.app.Fragment {
+public class   Order0Fragment extends android.app.Fragment {
 
     private static final String ARG_POSITION = "position";
 
