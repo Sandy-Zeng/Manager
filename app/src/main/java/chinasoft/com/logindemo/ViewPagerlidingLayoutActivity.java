@@ -10,8 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -24,7 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import chinasoft.com.adapter.SlideFragmentPagerAdapter;
+import chinasoft.com.dbutil.CartHelper;
 import chinasoft.com.dbutil.HistoryHelper;
+import chinasoft.com.dbutil.LikeHelper;
 import chinasoft.com.service.BackGroundService;
 import chinasoft.com.service.Message;
 import chinasoft.com.view.DragScrollDetailsLayout;
@@ -58,6 +62,10 @@ public class ViewPagerlidingLayoutActivity extends AppCompatActivity {
     private ImageView back;
     @ViewInject(R.id.tablayout)
     private TabLayout tablayout;
+    @ViewInject(R.id.addtocart)
+    private Button addtocart;
+    @ViewInject(R.id.addtolike)
+    private ImageView addtolike;
     private int[] image = {R.drawable.p1big, R.drawable.p2big, R.drawable.p3big, R.drawable.p4big, R.drawable.p5big, R.drawable.p6big,
             R.drawable.p7big, R.drawable.p8big, R.drawable.p9big, R.drawable.p10big, R.drawable.p11big, R.drawable.p12big, R.drawable.p13big, R.drawable.p14big,
             R.drawable.p15big, R.drawable.p16big};
@@ -77,10 +85,10 @@ public class ViewPagerlidingLayoutActivity extends AppCompatActivity {
         Intent in = getIntent();
         String json = in.getStringExtra("json");
         com.alibaba.fastjson.JSONObject object = (com.alibaba.fastjson.JSONObject) JSON.parse(json);
-        Integer pid = (Integer) object.get("productId");
-        String title = (String) object.get("productName");
-        String prices = (String) object.get("price");
-        String place = (String) object.get("country");
+        final Integer pid = (Integer) object.get("productId");
+        final String title = (String) object.get("productName");
+        final String prices = (String) object.get("price");
+        final String place = (String) object.get("country");
         String web = (String) object.get("webPrice");
         Integer num = (Integer) object.get("StoreNum");
         String brandName = (String) object.get("brandname");
@@ -161,7 +169,40 @@ public class ViewPagerlidingLayoutActivity extends AppCompatActivity {
 
             }
         });
+
+        addtocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CartHelper cartHelper = new CartHelper();
+                if (cartHelper.hasCart(pid)) {
+                    cartHelper.update(1, pid);
+                } else {
+                    SharedPreferences sp = getSharedPreferences("user", MODE_PRIVATE);
+                    String user = sp.getString("username", "");
+                    cartHelper.add(pid, 1, user, prices, title, place);
+                }
+                cartHelper.close();
+                Toast.makeText(ViewPagerlidingLayoutActivity.this, "成功添加购物车", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        addtolike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LikeHelper likeHelper = new LikeHelper();
+                if (likeHelper.hasLike(pid)) {
+                    Toast.makeText(ViewPagerlidingLayoutActivity.this, "该商品已添加收藏", Toast.LENGTH_SHORT).show();
+                } else {
+                    SharedPreferences sp = getSharedPreferences("user", MODE_PRIVATE);
+                    String user = sp.getString("username", "");
+                    likeHelper.add(pid, user, title, place, prices);
+                    likeHelper.close();
+                    Toast.makeText(ViewPagerlidingLayoutActivity.this, "成功添加收藏", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

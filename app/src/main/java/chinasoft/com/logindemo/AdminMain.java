@@ -98,7 +98,7 @@ public class AdminMain extends AppCompatActivity {
                         transaction.replace(R.id.adminframepage,contentFragment);
                         break;
                     case 6:
-                       Intent intent=new Intent(view.getContext(),login.class);
+                        Intent intent = new Intent(view.getContext(), ChangeActivity.class);
                         startActivity(intent);
                         break;
                     default:

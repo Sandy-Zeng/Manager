@@ -188,7 +188,7 @@ public class login extends Activity {
         //FormBody.Builder builder1=new FormBody.Builder();
         //FormBody formBody=builder1.add("username",str).add("password",pwd).build();
        // Request.Builder builder=new Request.Builder();
-        Request request =new Request.Builder().url("http://192.168.40.14:8080/dgManager/userlogin!userLogin?username="+str+"&password="+pwd)
+        Request request = new Request.Builder().url("http://192.168.40.14:8080/dgManager/userlogin!userLogin?username=" + str + "&password=" + pwd)
                 .get()
                 .build();
         //Request request=builder.url("http://192.168.40.14:8080/dgManager/userlogin").post(formBody).build();
@@ -217,6 +217,7 @@ public class login extends Activity {
             public void onResponse(Call call, Response response) throws IOException {
                 Log.i("info","链接成功");
                 String s=response.body().string();
+                Log.i("info", s);
                 Message message =new Message();
                 message.what = tag;
                 message.obj =s;
@@ -326,8 +327,10 @@ public class login extends Activity {
                     super.run();
                     try{
                         sleep(3000);
-                        Intent intent=new Intent(login.this,ShouyeDemo.class);
-                        startActivity(intent);
+                        Request request1 = new Request.Builder().url("http://192.168.40.14:8080/dgManager/Product_findAllProduct")
+                                .get()
+                                .build();
+                        exec(request1, 1);
                     }catch(InterruptedException e){
                         e.printStackTrace();
                     }

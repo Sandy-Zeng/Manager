@@ -96,7 +96,6 @@
         <activity
             android:name=".HistoryActivity"
             android:theme="@style/NotitleTheme"></activity>
-            android:theme="@style/NotitleTheme" />
 
         <!-- 注册SDKActivity -->
         <activity
@@ -116,8 +115,12 @@
             android:name="com.tencent.connect.common.AssistActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".AllOrderActivity" />
-        <activity android:name=".OrderListActivity"></activity>
+        <activity
+            android:name=".AllOrderActivity"
+            android:theme="@style/NotitleTheme" />
+        <activity
+            android:name=".OrderListActivity"
+            android:theme="@style/NotitleTheme"></activity>
     </application>
 
 </manifest>

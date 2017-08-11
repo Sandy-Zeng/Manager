@@ -5,35 +5,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="chinasoft.com.logindemo.AllOrderActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/White">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="7"
-        android:background="#FF80AB"
-        android:gravity="center">
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#FF80AB">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back"
+            android:layout_marginLeft="5dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="当前订单"
-            android:textColor="@color/white"
-            android:textSize="25sp"/>
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="130dp" />
     </LinearLayout>
+
 
     <ListView
         android:id="@+id/commit_order"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="60"></ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:text="总计："
+            android:textColor="@color/appColor"
+            android:textSize="20sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:textColor="@color/appColor"
+            android:textSize="20sp"
+            android:gravity="center" />
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="7"
+            android:id="@+id/commit"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent"
             android:text="提交订单"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="@color/white"
             android:background="#FF80AB"/>
-
-
-
+    </LinearLayout>
 </LinearLayout>

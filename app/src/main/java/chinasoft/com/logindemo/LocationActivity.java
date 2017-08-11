@@ -1,29 +1,17 @@
 package chinasoft.com.logindemo;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Pattern;
-
 
 @ContentView(R.layout.activity_location)
-public class LocationActivity extends AppCompatActivity{
+public class LocationActivity extends AppCompatActivity {
     @ViewInject(R.id.et_user)
     private EditText et_user;
     @ViewInject(R.id.et_telephone)
@@ -46,14 +34,14 @@ public class LocationActivity extends AppCompatActivity{
 //    String store_detail;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_location);
+        // setContentView(R.layout.activity_location);
         x.view().inject(this);
         //存储
 
+/*
 
         sp=getSharedPreferences("location_Manager",MODE_PRIVATE);
         String user=sp.getString("user","");
@@ -67,10 +55,11 @@ public class LocationActivity extends AppCompatActivity{
         et_email.setText(email);
         et_location.setText(location);
         et_detail.setText(detail);
+*/
 
     }
 
-    @Override
+   /* @Override
     protected void onStop() {
         super.onStop();
         SharedPreferences.Editor editor=sp.edit();
@@ -80,5 +69,5 @@ public class LocationActivity extends AppCompatActivity{
         editor.putString("location",et_location.getText().toString());
         editor.putString("detail",et_detail.getText().toString());
         editor.commit();
-    }
+    }*/
 }

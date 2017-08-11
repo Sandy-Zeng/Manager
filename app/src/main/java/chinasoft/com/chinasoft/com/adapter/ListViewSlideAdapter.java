@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import chinasoft.com.logindemo.R;
+import chinasoft.com.service.Order_Product;
 import chinasoft.com.util.MyCheckBox;
 
 /**
@@ -32,8 +33,13 @@ public class ListViewSlideAdapter extends SimpleAdapter {
     private OnClickListenerEditOrDelete onClickListenerEditOrDelete;
     private MyCheckBox checkBox;
     private LayoutInflater mInflater;
-    public ListViewSlideAdapter(Context context,  List<? extends Map<String, ?>> data, int resource, String[] from,
-                                int[] to){
+    private List<Order_Product> productList;
+    private List<Integer> pid;
+    private List<Integer> number;
+    private List<String> price;
+    private List<String> title;
+    public ListViewSlideAdapter(Context context, List<? extends Map<String, ?>> data, int resource, String[] from,
+                                int[] to, List<Order_Product> products, List<Integer> pids, List<Integer> num, List<String> price, List<String> title) {
         super(context, data, resource, from, to);
         this.bulbList=bulbList;
         this.context=context;
@@ -42,6 +48,11 @@ public class ListViewSlideAdapter extends SimpleAdapter {
         mFrom = from;
         mTo = to;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        productList = products;
+        pid = pids;
+        this.price = price;
+        this.title = title;
+        this.number = num;
     }
 
     /*@Override
@@ -174,9 +185,16 @@ public class ListViewSlideAdapter extends SimpleAdapter {
                     if(checkBox.isChecked())
                     {
                         onClickListenerEditOrDelete.OnClickListenerUnToggle(k);
+                        for (int i = 0; i < productList.size(); i++) {
+                            if (productList.get(i).getPid() == pid.get(k)) {
+                                productList.remove(i);
+                            }
+                        }
                     }
                     else {
                         onClickListenerEditOrDelete.OnClickListenerToggle(k);
+                        Order_Product product = new Order_Product(title.get(k), number.get(k), price.get(k), pid.get(k));
+                        productList.add(product);
                     }
                 }
                 checkBox.toggle();

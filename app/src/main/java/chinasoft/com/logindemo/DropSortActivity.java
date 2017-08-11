@@ -2,12 +2,15 @@ package chinasoft.com.logindemo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -40,6 +43,10 @@ public class DropSortActivity extends Activity {
     private TextView text;
     @ViewInject(R.id.plistView)
     private ListView plistView;
+    @ViewInject(R.id.search)
+    private EditText search;
+    @ViewInject(R.id.backtoHome)
+    private ImageView home;
 
     //菜单标题
     private String headers[] = {"排序", "国家", "品牌"};
@@ -131,6 +138,32 @@ public class DropSortActivity extends Activity {
                 exec(request, 1);
             }
         });
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DropSortActivity.this, SearchActivity.class);
+                Rect rect = new Rect();
+                //获取元素的位置信息
+                v.getGlobalVisibleRect(rect);
+                //将位置信息附加到intent 上
+                intent.setSourceBounds(rect);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Request request1 = new Request.Builder().url("http://192.168.40.14:8080/dgManager/Product_findAllProduct")
+                        .get()
+                        .build();
+                exec(request1, 3);
+
+            }
+        });
     }
 
 
@@ -170,6 +203,14 @@ public class DropSortActivity extends Activity {
                 //String result="ok";
                 Log.i("info", result);
                 Intent intent = new Intent(DropSortActivity.this, DropSortActivity.class);
+                intent.putExtra("json", result);
+                startActivity(intent);
+            }
+            if (msg.what == 3) {
+                String result = (String) msg.obj;
+                //String result="ok";
+                Log.i("info", result);
+                Intent intent = new Intent(DropSortActivity.this, ShouyeDemo.class);
                 intent.putExtra("json", result);
                 startActivity(intent);
             }

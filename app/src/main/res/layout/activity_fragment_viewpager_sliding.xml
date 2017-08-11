@@ -419,6 +419,7 @@
             android:layout_weight="1"
             android:gravity="center">
             <ImageView
+                android:id="@+id/addtolike"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:src="@drawable/like_press"
@@ -437,6 +438,7 @@
 
 
         <Button
+            android:id="@+id/addtocart"
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="match_parent"

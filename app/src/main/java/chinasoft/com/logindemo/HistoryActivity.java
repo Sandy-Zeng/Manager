@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class HistoryActivity extends AppCompatActivity {
     private List<String> title = new ArrayList<>();//获取商品名
     private List<String> place = new ArrayList<>();//获取商品国家
     private List<String> prices = new ArrayList<>();
+    @ViewInject(R.id.back)
     private ImageView back;
 
 

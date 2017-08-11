@@ -17,6 +17,7 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/search"
             android:layout_width="300dp"
             android:layout_height="30dp"
             android:layout_marginLeft="5dp"
@@ -25,7 +26,14 @@
             android:drawableLeft="@drawable/search"
             android:hint="Search here..."
             android:padding="5dp"
-            android:textColorHint="@color/appColor" />
+            android:textColorHint="@color/appColor"
+            android:focusable="false" />
+
+        <ImageView
+            android:id="@+id/backtoHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shouye_normal" />
 
         <!--<Button
             android:layout_width="0dp"

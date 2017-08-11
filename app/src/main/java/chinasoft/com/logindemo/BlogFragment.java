@@ -327,10 +327,10 @@ public class BlogFragment extends Fragment {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.i("info","链接失败");
-                /*Message message =new Message();
-                message.what=1;
-                message.obj ="ok";
-                handler.sendMessage(message);*/
+                Log.i("info", e.toString());
+                /*new AlertDialog.Builder(getActivity().getBaseContext()).setTitle("链接失败")
+                        .setView(LayoutInflater.from(getActivity().getBaseContext()).inflate(R.layout.oauthing, null))
+                        .create().show();*/
             }
 
             @Override

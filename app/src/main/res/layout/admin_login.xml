@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="80dp"
-        android:src="@drawable/loginlogo" />
+        android:src="@drawable/logop" />
 
     <EditText
         android:id="@+id/username"

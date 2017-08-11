@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="chinasoft.com.logindemo.LocationActivity">
+    tools:context="chinasoft.com.logindemo.LocationActivity"
+    android:background="@color/White">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +17,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@color/main_color"
+            android:background="@color/appColor"
             android:orientation="vertical">
 
             <TextView
@@ -24,7 +25,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="收货地址"
-                android:textColor="#ffffff"
+                android:textColor="@color/White"
                 android:textSize="22dp" />
         </LinearLayout>
 
@@ -41,7 +42,8 @@
                 android:background="#ffffff"
                 android:padding="10dp"
                 android:text="收货人："
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/et_user"
@@ -50,7 +52,8 @@
                 android:layout_weight="1"
                 android:background="#ffffff"
                 android:padding="10dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <View
@@ -71,7 +74,8 @@
                 android:background="#ffffff"
                 android:padding="10dp"
                 android:text="手机号："
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/et_telephone"
@@ -80,7 +84,8 @@
                 android:layout_weight="1"
                 android:background="#ffffff"
                 android:padding="10dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <View
@@ -101,7 +106,8 @@
                 android:background="#ffffff"
                 android:padding="10dp"
                 android:text="邮编    ："
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/et_email"
@@ -110,7 +116,8 @@
                 android:layout_weight="1"
                 android:background="#ffffff"
                 android:padding="10dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <View
@@ -132,7 +139,8 @@
                 android:background="#ffffff"
                 android:padding="10dp"
                 android:text="所在地区："
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/black" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -148,7 +156,8 @@
                     android:padding="10dp"
                     android:textSize="16sp"
                     android:layout_alignParentTop="true"
-                    android:layout_alignEnd="@+id/imageView" />
+                    android:layout_alignEnd="@+id/imageView"
+                    android:textColor="@color/black" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -179,7 +188,8 @@
                 android:background="#ffffff"
                 android:padding="10dp"
                 android:text="详细地址："
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/et_detail"
@@ -188,7 +198,8 @@
                 android:layout_weight="1"
                 android:background="#ffffff"
                 android:padding="10dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <View
@@ -202,7 +213,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@color/main_color"
+            android:background="@color/appColor"
             android:text="确定"
             android:textColor="@color/white"
             android:textSize="16sp" />

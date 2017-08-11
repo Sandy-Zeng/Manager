@@ -488,9 +488,9 @@ public class SearchActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.cancle:
                 runExitAnim();
-                Intent intent=new Intent(SearchActivity.this,ShouyeDemo.class);
+ /*               Intent intent=new Intent(SearchActivity.this,ShouyeDemo.class);
                 startActivity(intent);
-                overridePendingTransition(0, 0);
+                overridePendingTransition(0, 0);*/
                 finish();
                 break;
             default:

@@ -50,12 +50,12 @@
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="wrap_content"
-            android:src="@drawable/a1"/>
+            android:src="@drawable/zhangben" />
         <ImageView
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="wrap_content"
-            android:src="@drawable/a3"/>
+            android:src="@drawable/xinpin" />
 
     </LinearLayout>
 

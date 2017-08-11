@@ -3,6 +3,7 @@ package chinasoft.com.logindemo;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,9 +11,12 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +26,7 @@ import java.util.Map;
 import chinasoft.com.chinasoft.com.adapter.ListViewSlideAdapter;
 import chinasoft.com.dbutil.CartHelper;
 import chinasoft.com.dbutil.LikeHelper;
+import chinasoft.com.service.Order_Product;
 import chinasoft.com.util.MyCheckBox;
 import chinasoft.com.util.SlideListView;
 import chinasoft.com.vo.Cart;
@@ -42,6 +47,7 @@ public class CartFragment extends Fragment {
     private List<Integer> selectPrice = new ArrayList<>();
     private Integer tprice=0;//总计价格
     private List<Integer> number = new ArrayList<>();
+    private Button pay;
 
     private int[] image = {R.drawable.p1, R.drawable.p2, R.drawable.p3, R.drawable.p4, R.drawable.p5, R.drawable.p6,
             R.drawable.p7, R.drawable.p8, R.drawable.p9, R.drawable.p10, R.drawable.p11, R.drawable.p12, R.drawable.p13, R.drawable.p14,
@@ -54,6 +60,7 @@ public class CartFragment extends Fragment {
     private List<String> title = new ArrayList<>();//获取商品名
     private List<String> place = new ArrayList<>();//获取商品国家
     private List<String> prices = new ArrayList<>();
+    private List<Order_Product> productList = new ArrayList<>();
 
     // private String[] place={"日本","日本","台湾","日本","日本","日本","日本","日本","日本","日本"};
     @Nullable
@@ -70,8 +77,12 @@ public class CartFragment extends Fragment {
                 checkBoxSample2.toggle();
                 if (checkBoxSample2.isChecked()) {
                     tprice = 0;
+                    productList = new ArrayList<Order_Product>();
                     for (int i = 0; i < pid.size(); i++) {
                         tprice += Integer.valueOf(prices.get(i)) * number.get(i);
+                        Order_Product product = new Order_Product(title.get(i), number.get(i), prices.get(i), pid.get(i));
+                        productList.add(product);
+
                     }
                     for (int i = 0; i < listView.getChildCount(); i++) {
                         View v1 = listView.getChildAt(i);
@@ -84,6 +95,7 @@ public class CartFragment extends Fragment {
                 else
                 {
                     tprice = 0;
+                    productList = new ArrayList<Order_Product>();
                     for (int i = 0; i < listView.getChildCount(); i++) {
                         View v1 = listView.getChildAt(i);
                         MyCheckBox cb = (MyCheckBox) v1.findViewById(R.id.check2);
@@ -93,6 +105,18 @@ public class CartFragment extends Fragment {
                 }
             }
 
+        });
+
+
+        pay = (Button) v.findViewById(R.id.pay);
+        pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), AllOrderActivity.class);
+                String json = JSON.toJSONString(productList);
+                intent.putExtra("json", json);
+                startActivity(intent);
+            }
         });
         return v;
     }
@@ -119,7 +143,7 @@ public class CartFragment extends Fragment {
 
         int[] Ids={R.id.imgLamp,R.id.tvName,R.id.tvContent,R.id.tvPrice,R.id.tvNumber};
         String[] keys={"image","title","place","price","number"};
-        ListViewSlideAdapter listViewSlideAdapter=new ListViewSlideAdapter(v.getContext(),lists,R.layout.slidelist_item,keys,Ids);
+        ListViewSlideAdapter listViewSlideAdapter = new ListViewSlideAdapter(v.getContext(), lists, R.layout.slidelist_item, keys, Ids, productList, pid, number, prices, title);
         listView.setAdapter(listViewSlideAdapter);
         LikeHelper likeHelper = new LikeHelper();
         for(int i=0;i<pid.size();i++) {
