@@ -34,7 +34,7 @@
                 android:layout_toLeftOf="@id/icon_category">
 
                 <chinasoft.com.util.CategoryTabStrip
-                    android:id="@+id/category_strip"
+                    android:id="@+id/category_stripp"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/top_category_height"
                     android:clipToPadding="false"

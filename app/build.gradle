@@ -28,13 +28,15 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':library')
-    compile 'com.alibaba:fastjson:1.2.35'
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
-    compile 'com.google.code.gson:gson:2.5'
     // https://mvnrepository.com/artifact/com.jakewharton/butterknife
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'org.xutils:xutils:3.5.0'
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'com.alibaba:fastjson:1.2.35'
+    compile 'org.xutils:xutils:3.5.0'
+    compile 'com.google.code.gson:gson:2.5'
+    compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'io.reactivex:rxandroid:1.2.1'
