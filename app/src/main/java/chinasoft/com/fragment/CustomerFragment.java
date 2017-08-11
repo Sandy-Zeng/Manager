@@ -3,14 +3,14 @@ package chinasoft.com.fragment;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import chinasoft.com.vo.ViewPager;
 import chinasoft.com.logindemo.R;
 import chinasoft.com.util.CategoryTabStrip;
 import chinasoft.com.util.MyFragmentPageAdapter;
@@ -28,13 +28,13 @@ public class CustomerFragment extends android.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         final View v=inflater.inflate(R.layout.customer_fragment,container,false);
 
-        tabs = (CategoryTabStrip) v.findViewById(R.id.category_stripc);
-        pager = (ViewPager)v.findViewById(R.id.cview_pager);
-        adapter = new MyPagerAdapter(getFragmentManager());
+        tabs = (CategoryTabStrip)v.findViewById(R.id.category_stripc);
+        pager = (ViewPager)v.findViewById(R.id.view_pager);
+        adapter = new MyPagerAdapter(getChildFragmentManager());
 
         pager.setAdapter(adapter);
         tabs.setViewPager(pager);
-        pager.setCurrentItem(0);
+        //pager.setCurrentItem(1);
 
 
         return v;
@@ -65,11 +65,11 @@ public class CustomerFragment extends android.app.Fragment {
         @Override
         public Fragment getItem(int position) {
             switch(position){
-                case 0:
+                case 1:
                     return AllCustomerFragment.newInstance(0);
-                case 2:
-                    return AllCustomerFragment.newInstance(2);
                 case 3:
+                    return AllCustomerFragment.newInstance(2);
+                case 4:
                     return AllCustomerFragment.newInstance(3);
                 default:
                     return NewsFragment.newInstance(position);

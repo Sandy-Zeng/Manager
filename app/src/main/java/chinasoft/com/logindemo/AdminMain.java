@@ -83,6 +83,7 @@ public class AdminMain extends AppCompatActivity {
                         break;
                     case 2:
                         contentFragment = new ProductFragment();
+
                         transaction.replace(R.id.adminframepage,contentFragment);
                         break;
                     case 3:

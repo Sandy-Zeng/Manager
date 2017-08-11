@@ -3,7 +3,7 @@ package chinasoft.com.fragment;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import chinasoft.com.vo.ViewPager;
 
 import chinasoft.com.logindemo.R;
 import chinasoft.com.util.CategoryTabStrip;
@@ -28,14 +29,14 @@ public class OrderFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         final View v=inflater.inflate(R.layout.order_fragment,container,false);
 
-        tabs = (CategoryTabStrip) v.findViewById(R.id.category_stripo);
-        pager = (ViewPager)v.findViewById(R.id.oview_pager);
-        adapter = new MyPagerAdapter(getFragmentManager());
+        tabs = (CategoryTabStrip)v.findViewById(R.id.category_stripo);
+        pager = (ViewPager)v.findViewById(R.id.view_pager);
+        adapter = new MyPagerAdapter(getChildFragmentManager());
 
         pager.setAdapter(adapter);
         tabs.setViewPager(pager);
 
-        pager.setCurrentItem(0);
+        //pager.setCurrentItem(0);
 
         return v;
     }

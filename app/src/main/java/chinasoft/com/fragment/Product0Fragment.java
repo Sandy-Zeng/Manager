@@ -33,7 +33,7 @@ public class Product0Fragment extends android.app.Fragment {
     private View v;
     private int position;
     private int[]goodsimg={R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4,R.drawable.p5,R.drawable.p6,R.drawable.p7,
-            R.drawable.p8,R.drawable.p9,R.drawable.p10,R.drawable.p11,R.drawable.p12,R.drawable.p13,R.drawable.p14,R.drawable.p15,R.drawable.p16};
+            R.drawable.p8,R.drawable.p9,R.drawable.p10,R.drawable.p11,R.drawable.p12,R.drawable.p13,R.drawable.p14,R.drawable.p15,R.drawable.p16,R.drawable.p17};
 /*连接后台*/
     private String result;
     OkHttpClient okHttpClient=new OkHttpClient();
@@ -60,11 +60,18 @@ public class Product0Fragment extends android.app.Fragment {
         super.onCreate(savedInstanceState);
 
         position = getArguments().getInt(ARG_POSITION);
-        Log.i("info","request");
+        Log.i("info","position"+position);
         Request request1=new Request.Builder()
                 .url("http://192.168.40.14:8080/dgManager/Product_search_android").get().build();
 
         exec(request1);
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        v=inflater.inflate(R.layout.fragment_my_note,container,false);
+        listView=(ListView)v.findViewById(R.id.listviewmynote);
+        return v;
+
     }
     private void exec(Request request) {
         okHttpClient.newCall(request).enqueue(new Callback() {
@@ -133,11 +140,5 @@ public class Product0Fragment extends android.app.Fragment {
         SimpleAdapter simpleAdapter=new SimpleAdapter(v.getContext(),data,R.layout.fragment_product0,keys,ids);
         listView.setAdapter(simpleAdapter);
     }
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v=inflater.inflate(R.layout.fragment_my_note,container,false);
-        listView=(ListView)v.findViewById(R.id.listviewmynote);
-        return v;
 
-    }
 }
