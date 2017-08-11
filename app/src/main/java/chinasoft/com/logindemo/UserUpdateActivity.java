@@ -1,10 +1,11 @@
 package chinasoft.com.logindemo;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -16,12 +17,21 @@ public class UserUpdateActivity extends AppCompatActivity {
     private Button commit;
     @ViewInject(R.id.cancel)
     private Button cancel;
+    @ViewInject(R.id.back)
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_user_update);
         x.view().inject(this);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         commit.setOnClickListener(new View.OnClickListener() {
             @Override

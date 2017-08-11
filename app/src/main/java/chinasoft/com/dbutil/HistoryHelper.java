@@ -19,17 +19,19 @@ public class HistoryHelper {
     public HistoryHelper(){
         db = Connector.getWritableDatabase();
     }
-    public void add(Integer pid,String username)
+
+    public void add(Integer pid, String username, String title, String place, String price)
     {
         CustomerHelper customerHelper = new CustomerHelper();
         Customer customer=customerHelper.find(username);
-        History history = new History(pid,customer);
+        History history = new History(pid, customer, price, title, place);
         history.save();
     }
-    public void delete(Integer hid)
+
+    public void delete(Integer pid)
     {
-        History history = this.find(hid);
-        history.delete();
+        List<History> histories = DataSupport.where("pid = ?", Integer.toString(pid)).find(History.class);
+        histories.get(0).delete();
     }
 
     public void deleteAll(String username)
@@ -58,6 +60,16 @@ public class HistoryHelper {
     public void close()
     {
         db.close();
+    }
+
+    public boolean hasHistory(Integer pid, String username) {
+        CustomerHelper customerHelper = new CustomerHelper();
+        Customer customer = customerHelper.find(username);
+        List<History> histories = DataSupport.where("pid = ? and customer_id = ?", Integer.toString(pid), Integer.toString(customer.getId())).find(History
+                .class);
+        if (histories.size() == 0)
+            return false;
+        return true;
     }
 
 

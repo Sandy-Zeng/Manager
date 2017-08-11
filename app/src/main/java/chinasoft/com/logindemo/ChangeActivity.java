@@ -26,7 +26,7 @@ public class ChangeActivity extends Activity {
     public void change(View view){
         switch (view.getId()){
             case R.id.adminlogin:
-                Intent intent1=new Intent(ChangeActivity.this,AdminMain.class);
+                Intent intent1 = new Intent(ChangeActivity.this, AdminLogin.class);
                 startActivity(intent1);
                 break;
             case R.id.userlogin:

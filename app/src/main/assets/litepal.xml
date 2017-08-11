@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <litepal>
     <dbname value="manager"></dbname>
-    <version value ="4"></version>
+    <version value="3"></version>
     <list>
         <mapping class="chinasoft.com.vo.Customer"></mapping>
         <mapping class="chinasoft.com.vo.History"></mapping>

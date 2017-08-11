@@ -2,20 +2,23 @@ package chinasoft.com.logindemo;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import org.xutils.view.annotation.ContentView;
-import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 @ContentView(R.layout.activity_config)
 public class ConfigActivity extends AppCompatActivity {
+    @ViewInject(R.id.back)
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,13 @@ public class ConfigActivity extends AppCompatActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -89,7 +99,7 @@ public class ConfigActivity extends AppCompatActivity {
                 startActivity(go_about_us);
                 break;
             case R.id.exit:
-                Intent go_register=new Intent(ConfigActivity.this,login.class);
+                Intent go_register = new Intent(ConfigActivity.this, ChangeActivity.class);
                 startActivity(go_register);
                 break;
         }

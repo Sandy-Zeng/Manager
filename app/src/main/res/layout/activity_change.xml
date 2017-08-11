@@ -8,18 +8,21 @@
     <Button
         android:layout_marginTop="80dp"
         android:id="@+id/userlogin"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/changeloginuser"
         android:onClick="change"
-        android:text="用户登录"/>
+        android:text="用户登录"
+        android:textColor="@color/black" />
     <Button
         android:id="@+id/adminlogin"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:text="管理员登录"
         android:onClick="change"
-        android:background="@drawable/changelogin"/>
+        android:background="@drawable/changelogin"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp" />
        <!-- android:background="@drawable/changelogin"-->
 
 </LinearLayout>

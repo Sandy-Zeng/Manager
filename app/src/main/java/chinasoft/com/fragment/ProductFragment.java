@@ -34,6 +34,7 @@ public class ProductFragment extends Fragment {
 
         pager.setAdapter(adapter);
         tabs.setViewPager(pager);
+        // pager.setCurrentItem(0);
 
         return v;
     }

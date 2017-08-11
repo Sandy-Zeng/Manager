@@ -20,11 +20,12 @@ public class CartHelper {
     public CartHelper(){
         db = Connector.getWritableDatabase();
     }
-    public void add(Integer pid,Integer num,String username)
+
+    public void add(Integer pid, Integer num, String username, String price, String title, String place)
     {
         CustomerHelper customerHelper = new CustomerHelper();
         Customer customer=customerHelper.find(username);
-        Cart cart = new Cart(pid,num,customer);
+        Cart cart = new Cart(pid, num, customer, price, title, place);
         cart.save();
     }
     public void delete(Integer pid)

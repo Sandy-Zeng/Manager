@@ -15,11 +15,12 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/gosetting"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/addfriend" />
+                android:src="@drawable/setting" />
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -218,11 +219,13 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/searchHistory"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:src="@drawable/foot" />
 
                 <TextView
+                    android:id="@+id/track"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="足迹" />
@@ -238,11 +241,13 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/go_order"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:src="@drawable/order" />
 
                 <TextView
+                    android:id="@+id/order"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="订单" />

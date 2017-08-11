@@ -33,6 +33,7 @@ public class StorageFragment extends Fragment {
 
         pager.setAdapter(adapter);
         tabs.setViewPager(pager);
+        pager.setCurrentItem(0);
 
 
         return v;

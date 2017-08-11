@@ -28,7 +28,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class Order0Fragment extends android.app.Fragment {
+public class   Order0Fragment extends android.app.Fragment {
 
     private static final String ARG_POSITION = "position";
     private int position;

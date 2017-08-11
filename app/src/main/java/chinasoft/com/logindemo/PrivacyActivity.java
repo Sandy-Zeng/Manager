@@ -1,10 +1,12 @@
 package chinasoft.com.logindemo;
 
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -20,12 +22,22 @@ public class PrivacyActivity extends AppCompatActivity {
     private SharedPreferences sp;
     Boolean myname=true;
     Boolean myphone=false;
+    @ViewInject(R.id.back)
+    private ImageView back;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        // setContentView(R.layout.activity_privacy);
         x.view().inject(this);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         sp=getSharedPreferences("privacy_state",MODE_PRIVATE);
         myname=sp.getBoolean("name",true);

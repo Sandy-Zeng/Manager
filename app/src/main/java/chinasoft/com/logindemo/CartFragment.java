@@ -43,14 +43,19 @@ public class CartFragment extends Fragment {
     private Integer tprice=0;//总计价格
     private List<Integer> number = new ArrayList<>();
 
-    private int[] image={R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4,R.drawable.p5,R.drawable.p6,
-            R.drawable.p7,R.drawable.p8,R.drawable.p9,R.drawable.p10};
+    private int[] image = {R.drawable.p1, R.drawable.p2, R.drawable.p3, R.drawable.p4, R.drawable.p5, R.drawable.p6,
+            R.drawable.p7, R.drawable.p8, R.drawable.p9, R.drawable.p10, R.drawable.p11, R.drawable.p12, R.drawable.p13, R.drawable.p14,
+            R.drawable.p15, R.drawable.p16};
     private List<Integer> pid = new ArrayList<>();
-    private String[] title={"薏仁水","sofina妆前乳","DMC欣兰冻膜","肌美精3D面膜","城野医生毛孔收敛水","sana豆乳化妆水","sana豆乳乳液",
-            "sana叶绿素美背喷雾","canmake透亮美肌粉饼","5色眼影14色"};
-    private String[] price={"￥75","￥110","￥178","￥65","￥125","￥78","￥78","￥90","￥95","￥89"};
-    private Integer[] pri={75,110,178,65,125,78,90,95,89};
-    private String[] place={"日本","日本","台湾","日本","日本","日本","日本","日本","日本","日本"};
+    /*  private String[] title={"薏仁水","sofina妆前乳","DMC欣兰冻膜","肌美精3D面膜","城野医生毛孔收敛水","sana豆乳化妆水","sana豆乳乳液",
+              "sana叶绿素美背喷雾","canmake透亮美肌粉饼","5色眼影14色"};*/
+    //private String[] price={"￥75","￥110","￥178","￥65","￥125","￥78","￥78","￥90","￥95","￥89"};
+    //private Integer[] pri={75,110,178,65,125,78,90,95,89};
+    private List<String> title = new ArrayList<>();//获取商品名
+    private List<String> place = new ArrayList<>();//获取商品国家
+    private List<String> prices = new ArrayList<>();
+
+    // private String[] place={"日本","日本","台湾","日本","日本","日本","日本","日本","日本","日本"};
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -66,7 +71,7 @@ public class CartFragment extends Fragment {
                 if (checkBoxSample2.isChecked()) {
                     tprice = 0;
                     for (int i = 0; i < pid.size(); i++) {
-                        tprice += pri[i]*number.get(i);
+                        tprice += Integer.valueOf(prices.get(i)) * number.get(i);
                     }
                     for (int i = 0; i < listView.getChildCount(); i++) {
                         View v1 = listView.getChildAt(i);
@@ -105,6 +110,10 @@ public class CartFragment extends Fragment {
         {
             pid.add(carts.get(i).getPid());
             number.add(carts.get(i).getNum());
+            title.add(carts.get(i).getTitle());
+            prices.add(carts.get(i).getPrice());
+            place.add(carts.get(i).getPlace());
+
         }
         cartHelper.close();
 
@@ -115,10 +124,10 @@ public class CartFragment extends Fragment {
         LikeHelper likeHelper = new LikeHelper();
         for(int i=0;i<pid.size();i++) {
             Map<String, Object> map = new HashMap<>();
-            map.put("image", image[i]);
-            map.put("title", Integer.toString(pid.get(i)));
-            map.put("place", place[i]);
-            map.put("price", price[i]);
+            map.put("image", image[pid.get(i) - 1]);
+            map.put("title", title.get(i));
+            map.put("place", place.get(i));
+            map.put("price", "￥" + prices.get(i));
             map.put("number","x"+Integer.toString(number.get(i)));
             lists.add(map);
             listViewSlideAdapter.setOnClickListenerEditOrDelete(new ListViewSlideAdapter.OnClickListenerEditOrDelete() {
@@ -184,7 +193,7 @@ public class CartFragment extends Fragment {
                 @Override
                 public void OnClickListenerToggle(int position) {
                        selectPid.add(pid.get(position));
-                       tprice+=pri[position]*number.get(position);
+                    tprice += Integer.valueOf(prices.get(position)) * number.get(position);
                        totalPrice = (TextView)v.findViewById(R.id.totalprice);
                        totalPrice.setText("￥"+Integer.toString(tprice));
 
@@ -192,7 +201,7 @@ public class CartFragment extends Fragment {
 
                 @Override
                 public void OnClickListenerUnToggle(int position) {
-                    tprice-=pri[position]*number.get(position);
+                    tprice -= Integer.valueOf(prices.get(position)) * number.get(position);
                     totalPrice = (TextView)v.findViewById(R.id.totalprice);
                     totalPrice.setText("￥"+Integer.toString(tprice));
                 }

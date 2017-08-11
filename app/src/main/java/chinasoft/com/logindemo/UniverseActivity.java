@@ -1,12 +1,12 @@
 package chinasoft.com.logindemo;
 
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -20,6 +20,8 @@ public class UniverseActivity extends AppCompatActivity {
     private CheckBox message;
     @ViewInject(R.id.cache)
     private CheckBox cache;
+    @ViewInject(R.id.back)
+    private ImageView back;
     Boolean mylocation=true;
     Boolean mymessage=true;
     Boolean mycache=true;
@@ -59,6 +61,13 @@ public class UniverseActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

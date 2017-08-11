@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 import java.util.Map;
@@ -31,9 +32,13 @@ public class MySimpleAdapter extends SimpleAdapter {
     private int mDropDownResource;
     private LayoutInflater mInflater;
     private List<Integer> pid;
+    private List<String> mtitle;
+    private List<String> mplace;
+    private List<String> mprice;
     public MySimpleAdapter(Context context,
                            List<? extends Map<String, ?>> data, int resource, String[] from,
-                           int[] to,List<Integer> pids) {
+                           int[] to, List<Integer> pids,
+                           List<String> title, List<String> place, List<String> price) {
         super(context, data, resource, from, to);
         mData = data;
         mResource = mDropDownResource = resource;
@@ -41,6 +46,9 @@ public class MySimpleAdapter extends SimpleAdapter {
         mTo = to;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         pid = pids;
+        mtitle = title;
+        mplace = place;
+        mprice = price;
     }
        public View getView(int position, final View convertView, ViewGroup parent) {
         return createViewFromResource(position, convertView, parent, mResource);
@@ -76,6 +84,7 @@ public class MySimpleAdapter extends SimpleAdapter {
                 {
                     like.setImageResource(R.drawable.like_normal);
                     likeHelper.deleteByPid(id);
+                    Toast.makeText(v.getContext(), "成功取消收藏", Toast.LENGTH_SHORT).show();
                 }else{
                     like.setImageResource(R.drawable.like_press);
                     SharedPreferences sp = v.getContext().getSharedPreferences("user", v.getContext().MODE_PRIVATE);
@@ -83,7 +92,8 @@ public class MySimpleAdapter extends SimpleAdapter {
                     String username = sp.getString("username", "");
                     Log.i("info", username);
                     Log.i("info", Integer.toString(pid.get(k)));
-                    likeHelper.add(pid.get(k), username);
+                    likeHelper.add(pid.get(k), username, mtitle.get(k), mplace.get(k), mprice.get(k));
+                    Toast.makeText(v.getContext(), "成功添加收藏", Toast.LENGTH_SHORT).show();
                 }
                 likeHelper.close();
             }

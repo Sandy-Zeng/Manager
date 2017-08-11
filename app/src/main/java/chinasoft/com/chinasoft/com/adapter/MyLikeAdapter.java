@@ -1,6 +1,9 @@
 package chinasoft.com.chinasoft.com.adapter;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +19,10 @@ import java.util.List;
 import java.util.Map;
 
 import chinasoft.com.dbutil.CartHelper;
+import chinasoft.com.dbutil.HistoryHelper;
+import chinasoft.com.dbutil.LikeHelper;
+import chinasoft.com.logindemo.HistoryActivity;
+import chinasoft.com.logindemo.MyFragment;
 import chinasoft.com.logindemo.R;
 
 /**
@@ -31,9 +38,15 @@ public class MyLikeAdapter extends SimpleAdapter {
     private int mDropDownResource;
     private LayoutInflater mInflater;
     private List<Integer> pid;
+    private List<String> mtitle;
+    private List<String> mplace;
+    private List<String> mprice;
+    private Context mcontext;
+    private FragmentManager fragmentManager = null;
     public MyLikeAdapter(Context context,
-                           List<? extends Map<String, ?>> data, int resource, String[] from,
-                           int[] to,List<Integer> pids) {
+                         List<? extends Map<String, ?>> data, int resource, String[] from,
+                         int[] to, List<Integer> pids, List<String> title, List<String> place, List<String> price,
+                         FragmentManager mfragmentManager) {
         super(context, data, resource, from, to);
         mData = data;
         mResource = mDropDownResource = resource;
@@ -41,9 +54,37 @@ public class MyLikeAdapter extends SimpleAdapter {
         mTo = to;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         pid = pids;
+        mtitle = title;
+        mplace = place;
+        mprice = price;
+        mcontext = context;
+        fragmentManager = mfragmentManager;
+    }
+
+    public MyLikeAdapter(Context context,
+                         List<? extends Map<String, ?>> data, int resource, String[] from,
+                         int[] to, List<Integer> pids, List<String> title, List<String> place, List<String> price
+    ) {
+        super(context, data, resource, from, to);
+        mData = data;
+        mResource = mDropDownResource = resource;
+        mFrom = from;
+        mTo = to;
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        pid = pids;
+        mtitle = title;
+        mplace = place;
+        mprice = price;
+        mcontext = context;
+
     }
     public View getView(int position, final View convertView, ViewGroup parent) {
         return createViewFromResource(position, convertView, parent, mResource);
+    }
+
+    public interface OnClickListenerLike {
+        void OnClickListenercancelLike(int position);
+
     }
 
     private View createViewFromResource(int position, View convertView,
@@ -81,15 +122,48 @@ public class MyLikeAdapter extends SimpleAdapter {
                     SharedPreferences sp = v.getContext().getSharedPreferences("user", v.getContext().MODE_PRIVATE);
                     //获取Editor对象
                     String username = sp.getString("username", "");
-                    cartHelper.add(pid.get(k), 1, username);
+                    cartHelper.add(pid.get(k), 1, username, mprice.get(k), mtitle.get(k), mplace.get(k));
                 }
                 cartHelper.close();
                 Toast.makeText(v.getContext(),"成功加入购物车",Toast.LENGTH_SHORT).show();
             }
         });
+        if (fragmentManager != null) {
+            final ImageView like = (ImageView) v.findViewById(R.id.cancelcollection);
+            like.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Integer id = pid.get(k);
+                    LikeHelper likeHelper = new LikeHelper();
+                    likeHelper.deleteByPid(id);
+                    android.app.FragmentTransaction transaction;
+                    transaction = fragmentManager.beginTransaction();
+                    Fragment init = new MyFragment();
+                    transaction.replace(R.id.fragmentPage, init, "fragment");
+                    transaction.commit();
+                    Toast.makeText(v.getContext(), "成功取消收藏", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            final ImageView delete = (ImageView) v.findViewById(R.id.deleteHistory);
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Integer id = pid.get(k);
+                    HistoryHelper historyHelper = new HistoryHelper();
+                    historyHelper.delete(id);
+                    Intent intent = new Intent(mcontext, HistoryActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    mcontext.startActivity(intent);
+                    Toast.makeText(v.getContext(), "成功删除", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
 
         return v;
     }
+
 
     private void bindView(int position, View view) {
         final Map dataSet = mData.get(position);
