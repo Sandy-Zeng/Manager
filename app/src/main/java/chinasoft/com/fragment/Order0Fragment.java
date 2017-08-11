@@ -66,7 +66,7 @@ public class Order0Fragment extends android.app.Fragment {
         position = getArguments().getInt(ARG_POSITION);
         Log.i("info","request");
         Request request1=new Request.Builder()
-                .url("http://192.168.40.14:8080/dgManager/orderinfo_search_android").get().build();
+                .url("http://192.168.40.14:8080/dgManager/orderinfo_searchonly_android").get().build();
         exec(request1);
     }
     private void exec(Request request) {

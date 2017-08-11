@@ -3,7 +3,6 @@ package chinasoft.com.fragment;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import java.util.List;
 import chinasoft.com.logindemo.R;
 import chinasoft.com.util.CategoryTabStrip;
 import chinasoft.com.util.MyFragmentPageAdapter;
+import chinasoft.com.vo.ViewPager;
 
 /**
  * Created by Ｓａｎｄｙ on 2017/8/5.
@@ -29,7 +29,7 @@ public class StorageFragment extends Fragment {
 
         tabs = (CategoryTabStrip)v.findViewById(R.id.category_strips);
         pager = (ViewPager)v.findViewById(R.id.view_pager);
-        adapter = new MyPagerAdapter(getFragmentManager());
+        adapter = new MyPagerAdapter(getChildFragmentManager());
 
         pager.setAdapter(adapter);
         tabs.setViewPager(pager);

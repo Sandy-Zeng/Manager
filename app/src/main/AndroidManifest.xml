@@ -48,7 +48,8 @@
         <activity android:name=".PrivacyActivity" />
         <activity android:name=".AboutUsActivity" />
         <activity android:name=".DropSortActivity">
-
+        </activity>
+        <activity android:name=".LoadingActivity">
         </activity>
         <activity android:name=".ContectActivity"></activity>
         <activity
@@ -59,7 +60,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".ChangeActivity"></activity>
         <activity
