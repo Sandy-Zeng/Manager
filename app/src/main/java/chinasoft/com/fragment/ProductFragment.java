@@ -27,7 +27,7 @@ public class ProductFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         final View v=inflater.inflate(R.layout.product_fragment,container,false);
 
-        tabs = (CategoryTabStrip)v.findViewById(R.id.category_strip);
+        tabs = (CategoryTabStrip) v.findViewById(R.id.category_stripp);
         pager = (ViewPager)v.findViewById(R.id.pview_pager);
         adapter = new MyPagerAdapter(getFragmentManager());
 
