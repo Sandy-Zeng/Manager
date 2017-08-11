@@ -37,8 +37,6 @@
         <activity
             android:name=".ShouyeDemo"
             android:windowSoftInputMode="stateHidden" />
-
-        </activity>
         <activity android:name=".ContectActivity"></activity>
         <activity
             android:name=".IndexActivity"
@@ -98,7 +96,6 @@
         <activity
             android:name=".HistoryActivity"
             android:theme="@style/NotitleTheme"></activity>
-            android:theme="@style/NotitleTheme" />
 
         <!-- 注册SDKActivity -->
         <activity
